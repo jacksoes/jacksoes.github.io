@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+
+.horizontal-container{
+    display: flex;
+    height: 25vh;
+    width: 100vw;
+
+}
+
+.horizontal-container > div{
+    border: 2px solid black;
+
+}
+
+.rating-section{
+    flex-grow: 1;
+}
+
+.selection{
+    flex-grow: 3;
+}
+
+.recommended{
+    flex-grow: 1;
+}
+
+.header{
+    width: 100%;
+    height: 5vh;
+}
+
+.nav-container{
+    height: 100%;
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+
+.nav-list{
+    height: 100%;
+    width: 25%;
+
+    display: flex;
+    
+}
+
+.nav-list li{
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    list-style: none;
+    
+
+
+}
