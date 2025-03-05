@@ -1,12 +1,13 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     
 }
 
 .horizontal-container{
     display: flex;
-    height: 25vh;
+    height: 35vh;
     width: 100vw;
 
 }
@@ -56,5 +57,29 @@
     list-style: none;
     
 
+
+}
+
+.horizontal-container-large{
+    display: flex;
+    height: 60vh;
+   
+}
+
+
+.horizontal-container-large > div{
+    border: solid black;
+    border-width: 2px 2px 0px 2px;
+
+}
+
+.section-1{
+    flex-grow: 1;
+
+    
+}
+
+.section-2{
+    flex-grow: 1;
 
 }
