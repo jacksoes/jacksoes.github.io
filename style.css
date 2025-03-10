@@ -58,7 +58,7 @@
 
 .horizontal-container-large{
     display: flex;
-    height: 60vh;
+    height: 55vh;
    
 }
 
@@ -88,7 +88,6 @@
 
 .course-span{
     display: flex;
-
     height: 100%;
     width: 100%;
 
@@ -96,13 +95,12 @@
 
 .course{
     background-color: green;
-    border: .5rem solid lightyellow;
+    border: .5rem solid yellow;
     width: 100%;
     height: 100%;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
-    
 }
 .course > *{
     height: 100%;
@@ -127,4 +125,22 @@
 
 #test{
     background-color: white;
+}
+
+.section-header{
+    width: 100%;
+    background-color: red;
+}
+
+
+.footer{
+    width: 100%;
+    height: 5vh;
+    background-color: rgb(255, 255, 159);
+    border-left: solid yellow 8px;
+
+}
+
+.footer, .header{
+    outline: 2px solid black;
 }
