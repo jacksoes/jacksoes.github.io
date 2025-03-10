@@ -1,3 +1,4 @@
+
 *{
     margin: 0;
     padding: 0;
@@ -12,28 +13,24 @@
 
 }
 
-.horizontal-container > div{
-    border: 2px solid black;
-
-}
 
 .rating-section{
-    flex-grow: 1;
+    width: 15%;
 }
 
 .selection{
-    flex-grow: 3;
+    width: 70%;
 }
 
 .recommended{
-    flex-grow: 1;
+    width: 15%;
 }
 
 .header{
     width: 100%;
     height: 5vh;
-    background-color: skyblue;
-    border-left: solid blue 8px;
+    background-color: lightgreen;
+    border-left: solid green 8px;
 }
 
 .nav-container{
@@ -62,24 +59,91 @@
 
 .horizontal-container-large{
     display: flex;
-    height: 60vh;
+    height: 55vh;
    
 }
 
 
-.horizontal-container-large > div{
-    border: solid black;
-    border-width: 2px 2px 0px 2px;
 
-}
 
 .section-1{
-    flex-grow: 1;
+    height: 90%;
+    width: 100%;
 
     
 }
 
 .section-2{
-    flex-grow: 1;
+    height: 90%;
+    width: 100%;
 
+}
+
+.card{
+    background-color: lightgreen;
+    margin: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+
+
+.course-span{
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+}
+
+.course{
+    background-color: green;
+    border: .5rem solid yellow;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+.course > *{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.course-heading{
+    flex-shrink: 1;
+
+}
+.course-rating{
+}
+.course-details{
+    flex-shrink: 2;
+}
+
+.course-button{
+    width: 100%;
+}
+
+#test{
+    background-color: white;
+}
+
+.section-header{
+    width: 100%;
+    background-color: red;
+}
+
+
+.footer{
+    width: 100%;
+    height: 5vh;
+    background-color: rgb(255, 255, 159);
+    border-left: solid yellow 8px;
+
+}
+
+.footer, .header{
+    outline: 2px solid black;
 }

@@ -25,31 +25,109 @@
 
     <div class="horizontal-container">
 
-        <div class="rating-section">
+        <div class="rating-section card">
 
         </div>
 
-        <div class="selection">
+        <div class="selection card">
+
+            <span class="course-span">
+                <div class="course">
+                    <span class="course-heading">
+                        <h1>Algebra</h1>
+                    </span>
+                    <span class="course-rating">
+                        <h1>3.5</h1>
+                    </span>
+                    <span class="course-details"><button class="course-button">details</button></span>
+                </div>
+                <div class="course">
+                    <span class="course-heading">
+                        <h1>Algebra</h1>
+                    </span>
+                    <span class="course-rating">
+                        <h1>3.5</h1>
+                    </span>
+                    <span class="course-details"><button class="course-button">details</button></span>
+                </div>
+                <div class="course">
+                    <span class="course-heading">
+                        <h1>Algebra</h1>
+                    </span>
+                    <span class="course-rating">
+                        <h1>3.5</h1>
+                    </span>
+                    <span class="course-details"><button class="course-button">details</button></span>
+                </div>
+                <div class="course">
+                    <span class="course-heading">
+                        <h1>Algebra</h1>
+                    </span>
+                    <span class="course-rating">
+                        <h1>3.5</h1>
+                    </span>
+                    <span class="course-details"><button class="course-button">details</button></span>
+                </div>
+
+            </span>
 
         </div>
 
-        <div  class="recommended">
+        <div class="recommended card">
+            <h2>similar classes:</h2>
+
+            <ul id="similar-list">
+                <li>calculus1</li>
+                <li>calculus2</li>
+            </ul>
 
         </div>
     </div>
 
     <div class="horizontal-container-large">
 
-        <div class="section-1">
-            section 1
+        <div class="section-1 card">
+            <h1>topics typically covered:</h1>
+            <ul id="topics-list">
+                <li>quadratic equation</li>
+                <li>other stuff</li>
+
+
+            </ul>
+
 
         </div>
 
-        <div class="section-2">
-            section 2
+        <div class="section-2 card">
+            <h1>Popular learning resources:</h1>
+            <ul id="resources-list">
+                <li>w3schools</li>
+                <li>freecode campe</li>
+            </ul>
         </div>
 
     </div>
+
+    <footer>
+        <div class="footer">
+            <nav class="nav-container">
+                <ul class="nav-list">
+                    <li>Contact</li>
+                    <li>about</li>
+                </ul>
+            </nav>
+
+        </div>
+
+    </footer>
+    <button onclick="testin()">ytest</button>
+
+    <form onsubmit="testForm()">
+        Enter name: <input id="test" type="text" name="testSubmit" value="testvalue">
+
+    </form>
+
+    <script src="app.js"></script>
 
 
 </body>
