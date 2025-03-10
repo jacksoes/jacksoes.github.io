@@ -12,10 +12,6 @@
 
 }
 
-.horizontal-container > div{
-    border: 2px solid black;
-
-}
 
 .rating-section{
     flex-grow: 1;
@@ -32,8 +28,8 @@
 .header{
     width: 100%;
     height: 5vh;
-    background-color: skyblue;
-    border-left: solid blue 8px;
+    background-color: lightgreen;
+    border-left: solid green 8px;
 }
 
 .nav-container{
@@ -67,11 +63,7 @@
 }
 
 
-.horizontal-container-large > div{
-    border: solid black;
-    border-width: 2px 2px 0px 2px;
 
-}
 
 .section-1{
     flex-grow: 1;
@@ -81,5 +73,28 @@
 
 .section-2{
     flex-grow: 1;
+
+}
+
+.card{
+    background-color: lightgreen;
+    margin: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.course{
+    background-color: green;
+    border: 2px solid black;
+    width: 100%;
+    height: 100%;
+}
+
+.course-span{
+    display: flex;
+
+    height: 100%;
+    width: 100%;
 
 }
