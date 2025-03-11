@@ -54,4 +54,7 @@ app.post("/", async function(req,res){
     //    console.log("server Running on port" + host.address().address +  port)}
 
 //)
-http.createServer(options, app).listen(port, "0.0.0.0");
+
+
+let host = http.createServer(options, app)
+host.listen(port, "0.0.0.0", () => console.log("running at " + port ));
