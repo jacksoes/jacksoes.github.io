@@ -1,4 +1,4 @@
-const serverURI = "http://0.0.0.0:3000"
+const serverURI = "https://0.0.0.0:3000"
 function testForm() {
     event.preventDefault()
     let testi = document.querySelector("#test").value;
