@@ -2,6 +2,17 @@ const express = require("express")
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const cors = require('cors')
 const bodyParser = require("body-parser");
+require('dotenv').config();
+
+var https = require('https');
+var http = require('http');
+var fs = require('fs');
+
+var options = {
+    key: fs.readFileSync('../ssl/key.pem'),
+    cert: fs.readFileSync('../ssl/cert.pem'),
+    passphrase: process.env.HTTPS_PASSPHRASE
+  };
 
 const app = express();
 
@@ -15,7 +26,7 @@ const port = 3000;
 
 app.use(cors());
 
-const genAI = new GoogleGenerativeAI("AIzaSyD0mlSqRX03sIdjhcY3qTWlob4FibasYas");
+const genAI = new GoogleGenerativeAI(process.env.GEMENI_API);
 const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
 //const prompt = "Explain how AI works";
@@ -38,4 +49,9 @@ app.post("/", async function(req,res){
     
 })
 
-app.listen(port, "0.0.0.0")
+//let host = app.listen( ()=>
+  //   {
+    //    console.log("server Running on port" + host.address().address +  port)}
+
+//)
+https.createServer(options, app).listen(port, "0.0.0.0");
