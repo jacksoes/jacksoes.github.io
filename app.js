@@ -84,6 +84,14 @@ const addCourse = (event) => {
 
 }
 
+const updateRating = (rating) => {
+    let oldRating = document.querySelector("#test-rating")
+    oldRating.innerHTML = rating;
+
+
+
+}
+
 const getCourseData = (courseName, serverURI) =>{
 
     fetch(`${serverURI}/queryCourse`, {
@@ -95,9 +103,18 @@ const getCourseData = (courseName, serverURI) =>{
             "Content-type": "application/json; charset=UTF-8",
         }
     })
-    .then((response) => response.text())
-    .then((prompts) => {
-            console.log(prompts)
+    .then((response) => response.json())
+    .then((courseData) => {
+           
+            updateRating(courseData.rating)
+            //updateTopics(courseData.subject)
+            //updateResources(courseData.resource)
+          
+            
+            
+            
+           
+        
     })
 
 

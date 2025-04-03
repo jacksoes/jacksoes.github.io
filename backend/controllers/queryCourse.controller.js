@@ -32,6 +32,7 @@ const queryCourseController = async (req, res) => {
     console.log(courseData.rating)
     console.log(courseData.subject)
     console.log(courseData.resource)
+    res.json(courseData);
     /*
 
     promptRating: `give me an exact rating out of 5 of the general difficulty of the class ${courseName} return only a length of 3 in the format $.$, use factors such as fail rate and course level,  if you do not recognize the course return the string: 'invalid'`,
