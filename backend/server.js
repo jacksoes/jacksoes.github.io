@@ -1,24 +1,48 @@
-const express = require("express")
-const { GoogleGenerativeAI } = require("@google/generative-ai");
-const cors = require('cors')
-const bodyParser = require("body-parser");
-require('dotenv').config();
+require("dotenv").config();
+const express = require("express");
+
+const applyMiddleware = require("./middleware.js");
+const configGemini = require("./config-gemini.js")
+
+const queryCourseRouter = require("./routes/queryCourse.route.js")
 
 
-const app = express();
+
+//const result = await model.generateContent("hello explain the ai");
 
 const port = 3000;
+const app = express();
+
+async function main() {
+
+  // apply middleware 
+  applyMiddleware(app);
+
+  //use route
+  app.use("/", queryCourseRouter);
 
 
-app.use(cors());
 
-const genAI = new GoogleGenerativeAI(process.env.GEMENI_API);
-const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+  
 
 
-app.use(bodyParser.json())
+  //console.log(result.response.text())
 
 
+
+
+
+
+
+}
+
+main()
+
+
+
+
+
+/*
 app.post("/", async function(req,res){
     //console.log(JSON.stringify(req.body))
 
@@ -30,8 +54,8 @@ app.post("/", async function(req,res){
     res.send(result.response.text())
     
 })
-
+*/
 
 app.listen(port, () => {
-  console.log(`listening at port ${port}`)
-})
+  console.log(`listening at port ${port}`);
+});
