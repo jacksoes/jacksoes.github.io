@@ -1,15 +1,20 @@
-const serverURI = "https://airatemyclasses-server.onrender.com/"
-function testForm() {
+//const serverURI = "https://airatemyclasses-server.onrender.com/"
+
+
+
+
+const addCourse = (event) => {
     event.preventDefault()
-    let testi = document.querySelector("#test").value;
-    console.log(testi)
+    
+    
+    let courseName = event.target.children[0].value;
 
-    test(testi)
+    // get courseDATA as json from getCourseData()
 
-}
+    // put each course data property into dom
 
-function test(value) {
 
+    /*
     fetch(serverURI, {
         method: "POST",
         body: JSON.stringify({
@@ -66,7 +71,9 @@ function test(value) {
             let totalRating = "difficulty: " + promptsArr[0] + "/5"
             oldRating.innerHTML = totalRating
             oldName.innerHTML = value
-        });
+
+            
+        });*/
 
 
 
@@ -74,8 +81,27 @@ function test(value) {
 
 }
 
-function testin() {
-    test();
+const getCourseData = (courseName, serverURI) =>{
+
+    fetch(serverURI, {
+        method: "POST",
+        body: JSON.stringify({
+            promptRating: `give me an exact rating out of 5 of the general difficulty of the class ${courseName} return only a length of 3 in the format $.$, use factors such as fail rate and course level,  if you do not recognize the course return the string: 'invalid'`,
+            promptSubject: `give me a list of subjects that will be learned in the class: ${courseName} format it as a javscript array like so [$, $, $, $] the $ are strings of topics typically covered.`,
+            promptResource: `give me a list of resources that will be useful in the class: ${courseName} format it as a javscript array like so [$, $, $, $] the $ are strings of resources such as websites or books when taking the specified class.`,
+        }),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8",
+        }
+    })
+    .then((response) => response.text())
+    .then((prompts) => {
+            console.log(prompts)
+    })
+
+
+    
 }
+
 
 
