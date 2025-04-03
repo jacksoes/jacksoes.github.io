@@ -8,7 +8,7 @@ const queryCourseRouter = require("./routes/queryCourse.route.js")
 
 
 
-//const result = await model.generateContent("hello explain the ai");
+
 
 const port = 3000;
 const app = express();
