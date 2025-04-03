@@ -1,5 +1,6 @@
 //const serverURI = "https://airatemyclasses-server.onrender.com/"
 
+const serverURI = "http://localhost:3000"
 
 
 
@@ -8,6 +9,8 @@ const addCourse = (event) => {
     
     
     let courseName = event.target.children[0].value;
+
+    getCourseData(courseName, serverURI)
 
     // get courseDATA as json from getCourseData()
 
