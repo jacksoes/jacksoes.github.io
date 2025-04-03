@@ -72,6 +72,7 @@ li{
 .section-1{
     height: 90%;
     width: 100%;
+    
 
     
 }
@@ -150,3 +151,27 @@ li{
 .footer, .header{
     outline: 2px solid black;
 }
+
+.line{
+    background-color: whitesmoke;
+   margin-left: 5px;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    height: 35px;
+    width: 10px;
+
+}
+
+.ball{
+    
+    border: solid 2px black;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+
+}
+
+.ball:hover{
+    cursor: pointer;
+}
+
