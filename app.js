@@ -58,7 +58,8 @@ const addCourse = (event) => {
 
           
             let oldResources = document.querySelector("#resources-list")
-
+            let resources = document.createElement("ul");
+        
             while (oldResources.firstChild) {
                 oldResources.removeChild(oldResources.firstChild);
               }
@@ -84,13 +85,94 @@ const addCourse = (event) => {
 
 }
 
-const updateRating = (rating) => {
+const updateRating = (rating, name) => {
     let oldRating = document.querySelector("#test-rating")
+    console.log("update rating:")
+    console.log(oldRating)
     oldRating.innerHTML = rating;
 
-
+    let oldName = document.querySelector("#test-name")
+    oldName.innerHTML = name;
 
 }
+
+
+
+const updateTopics = (topics) => {
+
+    
+    let sec = document.querySelector("#section-one");
+
+    //fill section 1 with 
+    //div class flexpair
+    // child -> div class child flex, button class ball, div class line
+    //div dic class child -felx grow
+    //  child -> <p>course text
+
+
+
+
+    
+    while (sec.firstChild) {
+        sec.removeChild(sec.firstChild);
+      }
+
+    let header = document.createElement("h1")
+    header.classList.add("card-title")
+    header.innerHTML = "Topics covered"
+    sec.appendChild(header)
+
+    
+    console.log(sec)
+    console.log(topics.length)
+
+    let count = 0;
+    topics.forEach(topic => {
+        let div1 = document.createElement("div")
+        div1.classList.add("flex-pair")
+        let div2 = document.createElement("div")
+        div2.classList.add("child-flex")
+        let button = document.createElement("button")
+        button.classList.add("ball")
+        let line = document.createElement("div")
+        line.classList.add("line")
+        let div3 = document.createElement("div")
+        div3.classList.add("child-flex-grow")
+        let yo = document.createElement("p")
+        yo.innerHTML = topic 
+
+        sec.appendChild(div1)
+        div1.appendChild(div2)
+        div2.appendChild(button)
+        div2.appendChild(line)
+        div1.appendChild(div3)
+        div3.appendChild(yo)
+
+        //remove last line div
+        count++;
+        if (count == topics.length)
+            div2.removeChild(div2.lastChild)    
+
+    });
+
+}
+
+updateTopics(["one", "two", "three", "four"])
+updateRating("sadasod", "uoy")
+
+/*
+ <div class="flex-pair">
+            <div class="child-flex">
+          <button class="ball"></button>
+          <div class="line"></div>
+        </div>
+            <div class="child-flex-grow">
+                <p>yo dawg</p>
+            </div>
+        </div>
+        */
+
+
 
 const getCourseData = (courseName, serverURI) =>{
 
@@ -106,8 +188,8 @@ const getCourseData = (courseName, serverURI) =>{
     .then((response) => response.json())
     .then((courseData) => {
            
-            updateRating(courseData.rating)
-            //updateTopics(courseData.subject)
+            updateRating(courseData.rating, courseName)
+            updateTopics(courseData.subject)
             //updateResources(courseData.resource)
           
             

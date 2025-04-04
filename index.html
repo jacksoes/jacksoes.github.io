@@ -1,158 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link href="style.css" rel="stylesheet">
-</head>
+    <link href="style.css" rel="stylesheet" />
+  </head>
 
-<body>
-    <script src="app.js"></script>
+  <body>
+    
 
     <div class="header">
-        <nav class="nav-container">
-            <ul class="nav-list">
-                <li>Home</li>
-                <li>Login</li>
-                <li>Roadmap</li>
-            </ul>
-        </nav>
-
+      <nav class="nav-container">
+        <ul class="nav-list">
+          <li>Home</li>
+          <li>Login</li>
+          <li>Roadmap</li>
+        </ul>
+      </nav>
     </div>
 
     <form onsubmit="addCourse(event)">
-        Enter course name: <input id="test" type="submit text" name="testSubmit" value="">
-
+      Enter course name:
+      <input id="test" type="submit text" name="testSubmit" value="" />
     </form>
 
     <div class="horizontal-container">
+      <div class="rating-section card"></div>
 
-        <div class="rating-section card">
-
-        </div>
-
-        <div class="selection card">
-
-            <span class="course-span">
-                <div class="course">
-                    <span class="course-heading">
-                        <h1 id="test-name">Algebra</h1>
-                    </span>
-                    <span class="course-rating">
-                        <h1 id="test-rating">0</h1>
-                    </span>
-                    <span class="course-details"><button class="course-button">details</button></span>
-                </div>
-                <div class="course">
-                    <span class="course-heading">
-                        <h1>Algebra</h1>
-                    </span>
-                    <span class="course-rating">
-                        <h1>0</h1>
-                    </span>
-                    <span class="course-details"><button class="course-button">details</button></span>
-                </div>
-                <div class="course">
-                    <span class="course-heading">
-                        <h1>Algebra</h1>
-                    </span>
-                    <span class="course-rating">
-                        <h1>0</h1>
-                    </span>
-                    <span class="course-details"><button class="course-button">details</button></span>
-                </div>
-                <div class="course">
-                    <span class="course-heading">
-                        <h1>Algebra</h1>
-                    </span>
-                    <span class="course-rating">
-                        <h1>0</h1>
-                    </span>
-                    <span class="course-details"><button class="course-button">details</button></span>
-                </div>
-
+      <div class="selection card">
+        <span class="course-span">
+          <div class="course">
+            <span class="course-heading">
+              <h1 id="test-name">Algebra</h1>
             </span>
+            <span class="course-rating">
+              <h1 id="test-rating">0</h1>
+            </span>
+            <span class="course-details"
+              ><button class="course-button">details</button></span
+            >
+          </div>
+          <div class="course">
+            <span class="course-heading">
+              <h1>Algebra</h1>
+            </span>
+            <span class="course-rating">
+              <h1>0</h1>
+            </span>
+            <span class="course-details"
+              ><button class="course-button">details</button></span
+            >
+          </div>
+          <div class="course">
+            <span class="course-heading">
+              <h1>Algebra</h1>
+            </span>
+            <span class="course-rating">
+              <h1>0</h1>
+            </span>
+            <span class="course-details"
+              ><button class="course-button">details</button></span
+            >
+          </div>
+          <div class="course">
+            <span class="course-heading">
+              <h1>Algebra</h1>
+            </span>
+            <span class="course-rating">
+              <h1>0</h1>
+            </span>
+            <span class="course-details"
+              ><button class="course-button">details</button></span
+            >
+          </div>
+        </span>
+      </div>
 
-        </div>
+      <div class="recommended card">
+        <h2>similar classes:</h2>
 
-        <div class="recommended card">
-            <h2>similar classes:</h2>
-
-            <ul id="similar-list">
-                <li>calculus1</li>
-                <li>calculus2</li>
-            </ul>
-
-        </div>
+        <ul id="similar-list">
+          <li>calculus1</li>
+          <li>calculus2</li>
+        </ul>
+      </div>
     </div>
 
     <div class="horizontal-container-large">
-
-        <div class="section-1 card">
-            <div>
-            
+        
+      <div class="card" id="section-one">
+        
+        <!--
+        <div class="flex-pair">
+            <div class="child-flex">
+          <button class="ball"></button>
+          <div class="line"></div>
+        </div>
+            <div class="child-flex-grow">
+                <p>yo dawg</p>
             </div>
-            <button class="ball"></button>
-            <div class="line">
-
-            </div>
-            <button class="ball"></button>
-     
-            <div class="line">
-
-            </div>
-            <button class="ball"></button>
-            <div class="line">
-
-            </div>
-            <button class="ball"></button>
-     
-            <div class="line">
-
-            </div>
-            <button class="ball"></button>
-            <div class="line">
-
-            </div>
-            <button class="ball"></button>
-     
-            <div class="line">
-
-            </div>
-            <button class="ball"></button>
-            <div class="line">
-
-            </div>
-            <button class="ball"></button>
-          
-            
-           
-            
-
-            <!--
-            <ul id="topics-list">
-                <li>quadratic equation</li>
-                <li>other stuff</li>
-                
-
-            </ul>-->
-            
-
         </div>
 
-        <div class="section-2 card">
-            <h1>Popular learning resources:</h1>
-            <ul id="resources-list">
-                <li>w3schools</li>
-                <li>freecode campe</li>
-            </ul>
+        <div class="flex-pair">
+            <div class="child-flex">
+          <button class="ball"></button>
+          <div class="line"></div>
         </div>
+            <div class="child-flex-grow">
+                <p>yo dawg</p>
+            </div>
+        </div>-->
 
+
+        
+
+        
+      </div>
+
+      <div class="section-2 card">
+        <h1>Popular learning resources:</h1>
+        <ul id="resources-list">
+          <li>w3schools</li>
+          <li>freecode campe</li>
+        </ul>
+      </div>
     </div>
 
-    
     <!--
     <footer>
         <div class="footer">
@@ -167,10 +141,6 @@
 
     </footer>
     -->
-
-    
-
-
-</body>
-
+    <script src="app.js"></script>
+  </body>
 </html>
