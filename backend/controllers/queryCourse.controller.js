@@ -8,7 +8,7 @@ const queryCourseController = async (req, res) => {
     const course = req.body.courseName
     //prompts
     const promptRating = `Rate the difficulty of the course out of 5: ${course}. Return only a length 3 decimial in the format $.$`
-    const promptSubject = `give me a list of subjects in the course : ${course}. Return only a string with the format '$^^~~$^^~~$ ...etc' the $'s are the list contents. Try to give me a list of 9 subjects if possible.`
+    const promptSubject = `give me a list of subjects in the course : ${course}. Return only a string with the format '$^^~~$^^~~$ ...etc' the $'s are the list contents. Try to give me a list of 8 subjects if possible.`
     const promptResource = `give me a list of resources that will be useful in the course: ${course}. Return only a string with the format '$^^~~$^^~~$ ...etc' the $'s are the list contents.`
 
     //prompt as one request
