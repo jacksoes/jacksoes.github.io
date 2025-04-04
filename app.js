@@ -157,8 +157,37 @@ const updateTopics = (topics) => {
 
 }
 
-updateTopics(["one", "two", "three", "four"])
-updateRating("sadasod", "uoy")
+const updateResources = () =>{
+    
+}
+
+const dummyCourse = {
+    rating: "3.5",
+    topics: [
+        '\nLimits and Continuity',
+        'Derivatives',
+        'Applications of Derivatives',
+        'Integrals',
+        'Techniques of Integration',
+        'Sequences and Series',
+        'Differential Equations',
+        'Functions',
+      ],
+      resources: [
+        '\nTextbook',
+        'Online Homework System',
+        "Professor's Office Hours",
+        'Teaching Assistant Sessions',
+        'Online Forums',
+        'Khan Academy',
+        "Paul's Online Math Notes",
+        'Calculus Study Guides',
+      ] 
+}
+
+
+updateTopics(dummyCourse.topics)
+updateRating(dummyCourse.rating, "Calculus 1")
 
 /*
  <div class="flex-pair">

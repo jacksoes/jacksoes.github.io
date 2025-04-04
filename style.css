@@ -83,9 +83,14 @@ li{
     
 }
 
-.section-2{
+.section-small-col{
     height: 90%;
-    width: 100%;
+    width: 20dvw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    
 
 }
 
@@ -99,7 +104,8 @@ li{
 }
 
 .card-title{
-    
+    text-align: center;
+    margin-bottom: 2rem;
     
  
 }
@@ -187,7 +193,9 @@ li{
 
 .ball:hover{
     cursor: pointer;
+    background-color: #03AC13;
 }
+
 
 .flex-pair{
     width: 100%;
