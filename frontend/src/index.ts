@@ -9,6 +9,7 @@ type Course = {
 }
 
 
+
 const serverURI: string = "http://localhost:3000";
 const addCourse = (event: Event) => {
   event.preventDefault();
