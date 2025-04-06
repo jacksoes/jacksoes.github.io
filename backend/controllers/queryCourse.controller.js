@@ -21,13 +21,13 @@ const queryCourseController = async (req, res) => {
 
   const courseData = {
     rating: promptReponses[0],
-    subject: promptReponses[1].split('^^~~'),
-    resource: promptReponses[2].split('^^~~'),
+    subjects: promptReponses[1].split('^^~~'),
+    resources: promptReponses[2].split('^^~~'),
   };
 
   console.log(courseData.rating);
-  console.log(courseData.subject);
-  console.log(courseData.resource);
+  console.log(courseData.subjects);
+  console.log(courseData.resources);
   res.json(courseData);
   /*
 

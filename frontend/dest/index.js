@@ -5,74 +5,9 @@ const addCourse = (event) => {
     event.preventDefault();
     const courseName = event.target.children[0].value;
     getCourseData(courseName, serverURI);
-    // get courseDATA as json from getCourseData()
-    // put each course data property into dom
-    /*
-      fetch(serverURI, {
-          method: "POST",
-          body: JSON.stringify({
-              promptRating: `give me an exact rating out of 5 of the general difficulty of the class ${value} return only a length of 3 in the format $.$, use factors such as fail rate and course level,  if you do not recognize the course return the string: 'invalid'`,
-              promptSubject: `give me a list of subjects that will be learned in the class: ${value} format it as a javscript array like so [$, $, $, $] the $ are strings of topics typically covered.`,
-              promptResource: `give me a list of resources that will be useful in the class: ${value} format it as a javscript array like so [$, $, $, $] the $ are strings of resources such as websites or books when taking the specified class.`,
-          }),
-          headers: {
-              "Content-type": "application/json; charset=UTF-8",
-          }
-      })
-          .then((response) => response.text())
-          .then((prompts) => {
-              let promptsArr = prompts.split("&split")
-              console.log(promptsArr)
-  
-              promptsArr[1] = promptsArr[1].substring(2, promptsArr[1].length - 1)
-              promptsArr[2] = promptsArr[2].substring(2, promptsArr[2].length - 1)
-              console.log(promptsArr)
-  
-              promptsArr[1] = promptsArr[1].split(',')
-              promptsArr[2] = promptsArr[2].split(',')
-  
-              let topics = document.createElement("ul");
-              let resources = document.createElement("ul");
-  
-              let oldTopics = document.querySelector("#topics-list")
-              while (oldTopics.firstChild) {
-                  oldTopics.removeChild(oldTopics.firstChild);
-                }
-  
-              promptsArr[1].forEach(topic => {
-                  let newTopic = document.createElement("li")
-                  newTopic.innerHTML = topic
-                  oldTopics.appendChild(newTopic)
-  
-              });
-  
-  
-              let oldResources = document.querySelector("#resources-list")
-              let resources = document.createElement("ul");
-  
-              while (oldResources.firstChild) {
-                  oldResources.removeChild(oldResources.firstChild);
-                }
-              promptsArr[2].forEach(resource => {
-                  let newResource = document.createElement("li")
-                  newResource.innerHTML = resource
-                  oldResources.appendChild(newResource)
-              })
-  
-  
-              let oldRating = document.querySelector("#test-rating")
-              let oldName = document.querySelector("#test-name")
-              let totalRating = "difficulty: " + promptsArr[0] + "/5"
-              oldRating.innerHTML = totalRating
-              oldName.innerHTML = value
-  
-  
-          });*/
 };
 const updateRating = (rating, name) => {
     const oldRating = document.querySelector("#test-rating");
-    console.log("update rating:");
-    console.log(oldRating);
     oldRating.innerHTML = rating;
     const oldName = document.querySelector("#test-name");
     oldName.innerHTML = name;
@@ -91,8 +26,6 @@ const updateTopics = (topics) => {
     header.classList.add("card-title");
     header.innerHTML = "Topics covered";
     sec.appendChild(header);
-    console.log(sec);
-    console.log(topics.length);
     let count = 0;
     topics.forEach((topic) => {
         const div1 = document.createElement("div");
@@ -119,7 +52,17 @@ const updateTopics = (topics) => {
             div2.removeChild(div2.lastChild);
     });
 };
-const updateResources = () => { };
+const updateResources = (resources) => {
+    let oldResources = document.querySelector("#resources-list");
+    while (oldResources.firstChild) {
+        oldResources.removeChild(oldResources.firstChild);
+    }
+    resources.forEach(resource => {
+        let newResource = document.createElement("li");
+        newResource.innerHTML = resource;
+        oldResources.appendChild(newResource);
+    });
+};
 const dummyCourse = {
     rating: "3.5",
     topics: [
@@ -145,6 +88,7 @@ const dummyCourse = {
 };
 updateTopics(dummyCourse.topics);
 updateRating(dummyCourse.rating, "Calculus 1");
+updateResources(dummyCourse.resources);
 /*
  <div class="flex-pair">
             <div class="child-flex">
@@ -169,7 +113,7 @@ const getCourseData = (courseName, serverURI) => {
         .then((response) => response.json())
         .then((courseData) => {
         updateRating(courseData.rating, courseName);
-        updateTopics(courseData.subject);
-        //updateResources(courseData.resource)
+        updateTopics(courseData.subjects);
+        updateResources(courseData.resources);
     });
 };
