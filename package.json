@@ -1,0 +1,19 @@
+{
+  "name": "jacksoes.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "tsc --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^5.8.2"
+  },
+  "devDependencies": {
+    "gts": "^6.0.2",
+    "typescript": "^5.6.3",
+    "@types/node": "^22.7.5"
+  }
+}

@@ -1,46 +1,25 @@
-require("dotenv").config();
-const express = require("express");
+require('dotenv').config();
+const express = require('express');
 
-const applyMiddleware = require("./middleware.js");
-const configGemini = require("./config-gemini.js")
+const applyMiddleware = require('./middleware.js');
+const configGemini = require('./config-gemini.js');
 
-const queryCourseRouter = require("./routes/queryCourse.route.js")
-
-
-
-
+const queryCourseRouter = require('./routes/queryCourse.route.js');
 
 const port = 3000;
 const app = express();
 
 async function main() {
-
-  // apply middleware 
+  // apply middleware
   applyMiddleware(app);
 
   //use route
-  app.use("/", queryCourseRouter);
-
-
-
-  
-
+  app.use('/', queryCourseRouter);
 
   //console.log(result.response.text())
-
-
-
-
-
-
-
 }
 
-main()
-
-
-
-
+main();
 
 /*
 app.post("/", async function(req,res){
@@ -52,7 +31,7 @@ app.post("/", async function(req,res){
     console.log(result.response.text());
 
     res.send(result.response.text())
-    
+
 })
 */
 

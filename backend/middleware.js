@@ -1,14 +1,11 @@
-const cors = require("cors");
-const bodyParser = require("body-parser");
+const cors = require('cors');
+const bodyParser = require('body-parser');
 
-const applyMiddleware = (server) => {
+const applyMiddleware = server => {
+  server.use(cors());
+  server.use(bodyParser.json());
 
-    server.use(cors());
-    server.use(bodyParser.json());
-
-    console.log("middlware is applied")
-
-}
-
+  console.log('middlware is applied');
+};
 
 module.exports = applyMiddleware;
