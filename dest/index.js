@@ -1,8 +1,7 @@
 "use strict";
 //const serverURI = "https://airatemyclasses-server.onrender.com/"
-//const serverURI = "http://localhost:3000";
-const serverURI = 'http://localhost:3000';
-const addCourse = event => {
+const serverURI = "http://localhost:3000";
+const addCourse = (event) => {
     event.preventDefault();
     const courseName = event.target.children[0].value;
     getCourseData(courseName, serverURI);
@@ -71,15 +70,15 @@ const addCourse = event => {
           });*/
 };
 const updateRating = (rating, name) => {
-    const oldRating = document.querySelector('#test-rating');
-    console.log('update rating:');
+    const oldRating = document.querySelector("#test-rating");
+    console.log("update rating:");
     console.log(oldRating);
     oldRating.innerHTML = rating;
-    const oldName = document.querySelector('#test-name');
+    const oldName = document.querySelector("#test-name");
     oldName.innerHTML = name;
 };
-const updateTopics = topics => {
-    const sec = document.querySelector('#section-one');
+const updateTopics = (topics) => {
+    const sec = document.querySelector("#section-one");
     //fill section 1 with
     //div class flexpair
     // child -> div class child flex, button class ball, div class line
@@ -88,25 +87,25 @@ const updateTopics = topics => {
     while (sec.firstChild) {
         sec.removeChild(sec.firstChild);
     }
-    const header = document.createElement('h1');
-    header.classList.add('card-title');
-    header.innerHTML = 'Topics covered';
+    const header = document.createElement("h1");
+    header.classList.add("card-title");
+    header.innerHTML = "Topics covered";
     sec.appendChild(header);
     console.log(sec);
     console.log(topics.length);
     let count = 0;
-    topics.forEach(topic => {
-        const div1 = document.createElement('div');
-        div1.classList.add('flex-pair');
-        const div2 = document.createElement('div');
-        div2.classList.add('child-flex');
-        const button = document.createElement('button');
-        button.classList.add('ball');
-        const line = document.createElement('div');
-        line.classList.add('line');
-        const div3 = document.createElement('div');
-        div3.classList.add('child-flex-grow');
-        const yo = document.createElement('p');
+    topics.forEach((topic) => {
+        const div1 = document.createElement("div");
+        div1.classList.add("flex-pair");
+        const div2 = document.createElement("div");
+        div2.classList.add("child-flex");
+        const button = document.createElement("button");
+        button.classList.add("ball");
+        const line = document.createElement("div");
+        line.classList.add("line");
+        const div3 = document.createElement("div");
+        div3.classList.add("child-flex-grow");
+        const yo = document.createElement("p");
         yo.innerHTML = topic;
         sec.appendChild(div1);
         div1.appendChild(div2);
@@ -122,30 +121,30 @@ const updateTopics = topics => {
 };
 const updateResources = () => { };
 const dummyCourse = {
-    rating: '3.5',
+    rating: "3.5",
     topics: [
-        '\nLimits and Continuity',
-        'Derivatives',
-        'Applications of Derivatives',
-        'Integrals',
-        'Techniques of Integration',
-        'Sequences and Series',
-        'Differential Equations',
-        'Functions',
+        "\nLimits and Continuity",
+        "Derivatives",
+        "Applications of Derivatives",
+        "Integrals",
+        "Techniques of Integration",
+        "Sequences and Series",
+        "Differential Equations",
+        "Functions",
     ],
     resources: [
-        '\nTextbook',
-        'Online Homework System',
+        "\nTextbook",
+        "Online Homework System",
         "Professor's Office Hours",
-        'Teaching Assistant Sessions',
-        'Online Forums',
-        'Khan Academy',
+        "Teaching Assistant Sessions",
+        "Online Forums",
+        "Khan Academy",
         "Paul's Online Math Notes",
-        'Calculus Study Guides',
+        "Calculus Study Guides",
     ],
 };
 updateTopics(dummyCourse.topics);
-updateRating(dummyCourse.rating, 'Calculus 1');
+updateRating(dummyCourse.rating, "Calculus 1");
 /*
  <div class="flex-pair">
             <div class="child-flex">
@@ -159,16 +158,16 @@ updateRating(dummyCourse.rating, 'Calculus 1');
         */
 const getCourseData = (courseName, serverURI) => {
     fetch(`${serverURI}/queryCourse`, {
-        method: 'POST',
+        method: "POST",
         body: JSON.stringify({
             courseName: courseName,
         }),
         headers: {
-            'Content-type': 'application/json; charset=UTF-8',
+            "Content-type": "application/json; charset=UTF-8",
         },
     })
-        .then(response => response.json())
-        .then(courseData => {
+        .then((response) => response.json())
+        .then((courseData) => {
         updateRating(courseData.rating, courseName);
         updateTopics(courseData.subject);
         //updateResources(courseData.resource)
