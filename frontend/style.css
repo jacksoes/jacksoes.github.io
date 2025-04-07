@@ -6,7 +6,6 @@ li{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
 }
 
 .horizontal-container{
@@ -96,7 +95,6 @@ li{
 
 .card{
     background-color: lightgreen;
-    margin: 1.5rem;
     padding: .5rem;
     border-radius: .5rem;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -210,3 +208,20 @@ li{
 .child-flex-grow{
     flex-grow: 1;
 }
+
+
+.vw-20{
+    width: 20dvw !important;
+}
+
+
+
+.vw-60{
+    width: 60dvw !important;
+}
+
+
+#advisor{
+    height: 100%;
+    width: 100%;
+}   
