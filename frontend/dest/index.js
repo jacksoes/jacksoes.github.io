@@ -1,25 +1,5 @@
 "use strict";
 //const serverURI = "https://airatemyclasses-server.onrender.com/"
-
-
-let advisor = document.querySelector("#advisor");
-
-
-advisor.addEventListener("mouseenter", () =>{
-    console.log("mouse enter advisor")
-    advisor.src = "./resources/two.jpg"
-})
-
-
-function checkCookies(){
-
-}
-
-
-
-
-
-
 const serverURI = "http://localhost:3000";
 const addCourse = (event) => {
     event.preventDefault();
@@ -106,9 +86,9 @@ const dummyCourse = {
         "Calculus Study Guides",
     ],
 };
-//updateTopics(dummyCourse.topics);
-//updateRating(dummyCourse.rating, "Calculus 1");
-//updateResources(dummyCourse.resources);
+updateTopics(dummyCourse.topics);
+updateRating(dummyCourse.rating, "Calculus 1");
+updateResources(dummyCourse.resources);
 /*
  <div class="flex-pair">
             <div class="child-flex">
