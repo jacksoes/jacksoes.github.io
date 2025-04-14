@@ -8,6 +8,10 @@ li{
     box-sizing: border-box;
 }
 
+body{
+    background-color: #f8f8f8;
+}
+
 .horizontal-container{
     display: flex;
     height: 32.5vh;
@@ -32,8 +36,7 @@ li{
 .header{
     width: 100%;
     height: 5vh;
-    background-color: lightgreen;
-    border-left: solid green 8px;
+    background-color: #99cc66;
 }
 
 .nav-container{
@@ -99,7 +102,7 @@ li{
 }
 
 .card{
-    background-color: lightgreen;
+    background-color: #ffffff;
     padding: .5rem;
     border-radius: .5rem;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -125,7 +128,8 @@ li{
 
 .course{
   
-    border: .25rem solid green;
+    border: .25rem solid #006633;
+    background-color: #99cc66;;
     width: 80%;
     height: 100%;
     margin-left: 1rem;
@@ -162,7 +166,7 @@ li{
     padding: .5rem;
 }
 .course-button:hover{
-    background-color: green;
+    background-color: #006633;
 }
 
 #test{
@@ -209,7 +213,7 @@ li{
 
 .ball:hover{
     cursor: pointer;
-    background-color: #03AC13;
+    background-color: #006633;
 }
 
 
@@ -234,6 +238,13 @@ li{
     margin-right: 1.25dvw;
 }
 
+.vw-40{
+    width: 37.5dvw !important;
+    margin-left: 1.25dvw;
+    margin-right: 1.25dvw;
+
+}
+
 
 
 .vw-60{
@@ -241,6 +252,8 @@ li{
     margin-left: 1.25dvw;
     margin-right: 1.25dvw;
 }
+
+
 
 
 #advisor{
