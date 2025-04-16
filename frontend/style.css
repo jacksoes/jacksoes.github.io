@@ -317,10 +317,17 @@ body{
 }
 
 
-.checks{
+.rl-padding{
     padding: 0rem 1rem 0rem 1rem;
 }
 
+.green-small-button{
+    background-color: #99cc66;
+    border: .25rem solid #006633;
+    height: 2rem;
+    width: 2rem;
+    border-radius: .25rem;
+}
 
 
 
