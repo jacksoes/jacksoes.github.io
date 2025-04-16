@@ -93,7 +93,6 @@ body{
     margin-right: 1.25dvw;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-content: center;
     
 
@@ -306,6 +305,15 @@ body{
     padding-bottom: 1rem;
 }
 
+
+.resource-container{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 3rem;
+
+
+}
 
 
 
