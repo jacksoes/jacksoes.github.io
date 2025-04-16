@@ -14,8 +14,9 @@ body{
 
 .horizontal-container{
     display: flex;
-    height: 32.5vh;
+    height: 30vh;
     width: 100vw;
+    margin-top: 2.5vh;
     margin-bottom: 2.5vh;
 
 }
@@ -270,8 +271,8 @@ body{
 }
 
 #book-img{
-    height: 40%;
-    width: 40%;
+    height: 30%;
+    width: 30%;
 }
 
 #book-img-container{
@@ -309,14 +310,16 @@ body{
 .resource-container{
     display: flex;
     align-items: center;
-    gap: 1rem;
+  
     height: 3rem;
 
 
 }
 
 
-
+.checks{
+    padding: 0rem 1rem 0rem 1rem;
+}
 
 
 
