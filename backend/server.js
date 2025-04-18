@@ -6,12 +6,15 @@ const configGemini = require('./config-gemini.js');
 
 const queryCourseRouter = require('./routes/queryCourse.route.js');
 
+const connectDatabase = require('./database.js')
+
 const port = 3000;
 const app = express();
 
 async function main() {
   // apply middleware
   applyMiddleware(app);
+  connectDatabase();
 
   //use route
   app.use('/', queryCourseRouter);
