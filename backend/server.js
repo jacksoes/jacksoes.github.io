@@ -5,6 +5,7 @@ const applyMiddleware = require('./middleware.js');
 const configGemini = require('./config-gemini.js');
 
 const queryCourseRouter = require('./routes/queryCourse.route.js');
+const signUpRouter = require("./routes/signUp.route.js")
 
 const connectDatabase = require('./database.js')
 
@@ -18,6 +19,7 @@ async function main() {
 
   //use route
   app.use('/', queryCourseRouter);
+  app.use('/', signUpRouter);
 
   //console.log(result.response.text())
 }
