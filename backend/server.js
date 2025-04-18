@@ -6,6 +6,7 @@ const configGemini = require('./config-gemini.js');
 
 const queryCourseRouter = require('./routes/queryCourse.route.js');
 const signUpRouter = require("./routes/signUp.route.js")
+const logInRouter = require("./routes/logIn.route.js")
 
 const connectDatabase = require('./database.js')
 
@@ -20,6 +21,7 @@ async function main() {
   //use route
   app.use('/', queryCourseRouter);
   app.use('/', signUpRouter);
+  app.use('/', logInRouter);
 
   //console.log(result.response.text())
 }
