@@ -7,5 +7,14 @@ Complete user model:
             topicsCovered: [str]
             learningResources:[str]
         }]
+done
+
+
+
+create route to add classes to specific user
+
+
+
+
 
 
