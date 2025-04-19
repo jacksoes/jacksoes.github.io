@@ -1,0 +1,11 @@
+Complete user model:
+    nest array of course objects:
+        course : [{
+            title: str
+            rating: str
+            similarClasses: [str]
+            topicsCovered: [str]
+            learningResources:[str]
+        }]
+
+

@@ -18,6 +18,29 @@ const User = new mongoose.Schema({
     trim: true,
   },
 
+  course: [{
+    _id: String,
+    title: String,
+    similarClasses: [String],
+    topicsCovered: [String],
+    learningResources: [String],
+  }]
+
 });
+
+
+
+
+
+/*
+ course : [{
+            title: str
+            rating: str
+            similarClasses: [str]
+            topicsCovered: [str]
+            learningResources:[str]
+        }]
+
+*/
 
 module.exports = mongoose.model("User", User);
