@@ -282,7 +282,7 @@ body {
 }
 
 .form-container {
-  height: 40vh;
+  height: 50vh;
   width: 25vw;
   position: fixed;
   top: 40%;
@@ -333,6 +333,12 @@ body {
     align-items: center;
 
     
+}
+
+.flex-col > *{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
 }
 
 .signUp-label{
