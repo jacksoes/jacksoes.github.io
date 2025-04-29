@@ -350,6 +350,22 @@ body {
 }
 
 
+.button-minimal{
+    all: unset;
+  
+  
+}
+
+.button-minimal:focus{
+  outline: revert;
+
+
+}
+
+.button-minimal:hover{
+  color: blue;
+}
+
 /*
 <div class="horizontal-container">
     <div class="rating-section card vw-20">
