@@ -156,5 +156,12 @@ const userLogin = (event) => {
         .then((response) => response.json())
         .then((data) => {
         console.log(data);
+        console.log(data.userID);
+        document.cookie = "test=testcookies";
     });
 };
+function showCookies() {
+    const output = document.getElementById("cookies");
+    output.textContent = `> ${document.cookie}`;
+}
+showCookies();

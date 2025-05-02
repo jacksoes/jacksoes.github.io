@@ -25,7 +25,7 @@ const logInController = async (req, res) => {
 
     if(result){
         console.log("password matched");
-        res.send({ message: "User is successfully logged in", loggedIn : true});
+        res.send({ message: "User is successfully logged in", loggedIn : true, userID : foundUser._id});
 
     }else{
         console.log("password did not match");
