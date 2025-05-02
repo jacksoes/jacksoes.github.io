@@ -165,3 +165,11 @@ function showCookies() {
     output.textContent = `> ${document.cookie}`;
 }
 showCookies();
+function closeForm() {
+    console.log("close form ran");
+    let form = document.querySelector(".form-container");
+    while (form === null || form === void 0 ? void 0 : form.firstChild) {
+        form.removeChild(form.firstChild);
+    }
+    form === null || form === void 0 ? void 0 : form.remove();
+}

@@ -364,6 +364,7 @@ body {
 
 .button-minimal:hover{
   color: blue;
+  cursor: pointer !important;
 }
 
 /*
@@ -381,3 +382,7 @@ body {
 
     </div>
     */
+.close-button{
+  float: right;
+}
+

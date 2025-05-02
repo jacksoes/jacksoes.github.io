@@ -206,3 +206,18 @@ function showCookies() {
 }
 
 showCookies();
+
+
+function closeForm() {
+  console.log("close form ran")
+  let form = document.querySelector(".form-container");
+
+  while(form?.firstChild){
+    form.removeChild(form.firstChild);
+  }
+
+  form?.remove();
+
+  
+
+}
