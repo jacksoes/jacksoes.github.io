@@ -23,7 +23,7 @@ async function main() {
   app.use('/', queryCourseRouter);
   app.use('/', signUpRouter);
   app.use('/', logInRouter);
-  app.use("/course", addCourseRouter)
+  app.use("/", addCourseRouter)
 
   //console.log(result.response.text())
 }

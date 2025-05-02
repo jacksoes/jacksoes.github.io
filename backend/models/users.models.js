@@ -21,6 +21,7 @@ const User = new mongoose.Schema({
   course: [{
     _id: String,
     title: String,
+    rating: String,
     similarClasses: [String],
     topicsCovered: [String],
     learningResources: [String],
