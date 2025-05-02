@@ -208,8 +208,9 @@ function showCookies() {
 showCookies();
 
 
-function closeForm() {
-  console.log("close form ran")
+function removeElement(element) {
+  
+  /*console.log("close form ran")
   let form = document.querySelector(".form-container");
 
   while(form?.firstChild){
@@ -218,6 +219,18 @@ function closeForm() {
 
   form?.remove();
 
-  
+  */
+
+
+  console.log("close form ran")
+
+
+  while(element?.firstChild){
+    element.removeChild(element.firstChild);
+  }
+
+  element?.remove();
 
 }
+
+

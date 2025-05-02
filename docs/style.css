@@ -386,3 +386,16 @@ body {
   float: right;
 }
 
+
+
+
+
+.course-close-container{
+  background-color: red;
+  display: flex;
+  margin-left: auto;
+  height: 1rem;
+  width: 1rem;
+  justify-content: center;
+  align-items: center;
+}
