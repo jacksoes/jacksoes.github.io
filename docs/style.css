@@ -136,6 +136,7 @@ body {
 }
 .course-button:hover {
   background-color: #006633;
+  cursor: pointer !important;
 }
 
 #test {
@@ -144,7 +145,6 @@ body {
 
 .section-header {
   width: 100%;
-  background-color: red;
 }
 
 .footer {
@@ -389,9 +389,7 @@ body {
 
 
 
-
 .course-close-container{
-  background-color: red;
   display: flex;
   margin-left: auto;
   height: 1rem;

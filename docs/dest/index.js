@@ -164,7 +164,7 @@ function showCookies() {
     const output = document.getElementById("cookies");
     output.textContent = `> ${document.cookie}`;
 }
-showCookies();
+//showCookies();
 function removeElement(element) {
     /*console.log("close form ran")
     let form = document.querySelector(".form-container");
@@ -182,3 +182,131 @@ function removeElement(element) {
     }
     element === null || element === void 0 ? void 0 : element.remove();
 }
+const loadCourse = () => {
+    const courseTitle = "alge";
+    const courseRating = "3.0";
+    const courseID = "testid";
+    // select course-span
+    let parentContainer = document.querySelector(".course-span");
+    //parentContainer?.insertAdjacentElement("afterend",)
+    // add-child->
+    const courseContainer = document.createElement("div");
+    courseContainer.id = courseID;
+    courseContainer.classList.add("course");
+    parentContainer === null || parentContainer === void 0 ? void 0 : parentContainer.appendChild(courseContainer);
+    //add sibling ->
+    const closeButtonContainer = document.createElement("div");
+    closeButtonContainer.classList.add("course-close-container");
+    courseContainer === null || courseContainer === void 0 ? void 0 : courseContainer.appendChild(closeButtonContainer);
+    //add child->
+    const closeButton = document.createElement("button");
+    closeButton.classList.add("button-minimal");
+    closeButton.classList.add("course-close-button");
+    closeButton.innerHTML = "X";
+    //add even listener to remove by id
+    //courseContainer.id = courseID;
+    const courseToRemove = document.getElementById(courseID);
+    closeButton.addEventListener("click", () => removeElement(courseToRemove));
+    closeButtonContainer === null || closeButtonContainer === void 0 ? void 0 : closeButtonContainer.appendChild(closeButton);
+    //add sibling ->
+    const titleSpan = document.createElement("span");
+    titleSpan.classList.add("course-heading");
+    closeButtonContainer === null || closeButtonContainer === void 0 ? void 0 : closeButtonContainer.insertAdjacentElement("afterend", titleSpan);
+    // add child ->
+    const title = document.createElement("h1");
+    title.innerHTML = courseTitle;
+    titleSpan.appendChild(title);
+    // add sibling ->
+    const ratingSpan = document.createElement("span");
+    ratingSpan.classList.add("course-rating");
+    titleSpan === null || titleSpan === void 0 ? void 0 : titleSpan.insertAdjacentElement("afterend", ratingSpan);
+    // add child ->
+    const rating = document.createElement("h1");
+    rating.innerHTML = courseRating;
+    ratingSpan === null || ratingSpan === void 0 ? void 0 : ratingSpan.appendChild(rating);
+    // add sibling ->
+    const detailsSpan = document.createElement("span");
+    detailsSpan.classList.add("course-details");
+    ratingSpan === null || ratingSpan === void 0 ? void 0 : ratingSpan.insertAdjacentElement("afterend", detailsSpan);
+    // add child ->
+    const buttonContainer = document.createElement("div");
+    buttonContainer.classList.add("course-button-container");
+    detailsSpan.appendChild(buttonContainer);
+    // add child ->
+    const button = document.createElement("button");
+    button.classList.add("course-button");
+    button.innerHTML = "details";
+    buttonContainer.appendChild(button);
+    /*
+      <span class="course-span">
+    
+      <div class="course" id="course1">
+      <div class="course-close-container"><button class="button-minimal course-close-button" type="button" onclick="removeElement(document.querySelector('#course1'))">x</button></div>
+    
+        <span class="course-heading">
+    
+          <h1>Algebra</h1>
+        </span>
+        <span class="course-rating">
+          <h1>0</h1>
+        </span>
+        <span class="course-details">
+          <div class="course-button-container">
+            <button class="course-button">details</button>
+          </div>
+        </span>
+      </div>
+    */
+};
+function loadSimilarCourses() {
+    const dummyClasses = ["caluse1", "calculus2", "linear algebra"];
+    let parentContainer = document.querySelector(".recommended");
+    const title = document.createElement("h2");
+    title.innerHTML = "similar classes";
+    parentContainer === null || parentContainer === void 0 ? void 0 : parentContainer.appendChild(title);
+    dummyClasses.forEach((courseName) => {
+        // add sibling ->
+        const list = document.createElement("ul");
+        list.id = "similar-list";
+        title === null || title === void 0 ? void 0 : title.insertAdjacentElement("afterend", list);
+        // add child ->
+        const container = document.createElement("div");
+        container.classList.add("resource-container");
+        list === null || list === void 0 ? void 0 : list.appendChild(container);
+        // add child to container ->
+        const span = document.createElement("span");
+        span.classList.add("rl-padding");
+        container === null || container === void 0 ? void 0 : container.appendChild(span);
+        // add child to span ->
+        const button = document.createElement("button");
+        button.classList.add("green-small-button");
+        button.innerHTML = "+";
+        span.appendChild(button);
+        // add sibling to span ->
+        const name = document.createElement("p");
+        name.innerHTML = courseName;
+        span === null || span === void 0 ? void 0 : span.insertAdjacentElement("afterend", name);
+    });
+    /*
+  
+    <div class="recommended card vw-20">
+          <h2>similar classes:</h2>
+  
+          <ul id="similar-list">
+           
+            <div class="resource-container">
+              <span class="rl-padding">
+                <button class="green-small-button">+</button>
+              </span>
+              <p>algebra</p>
+            </div>
+          </ul>
+  
+        </div>*/
+}
+loadSimilarCourses();
+loadCourse();
+loadCourse();
+loadCourse();
+loadCourse();
+loadCourse();
