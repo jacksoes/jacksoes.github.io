@@ -1,11 +1,19 @@
 const User = require("../models/users.models.js");
 const bcrypt = require("bcrypt");
 
+const mongoose = require("mongoose");
+
 const signUpController = async (req, res) => {
   console.log("sign up controller ran");
+  console.log(JSON.stringify(req.body));
 
 
-  const testCourses = [
+  const username = JSON.stringify(req.body.username)
+  const password = JSON.stringify(req.body.password)
+
+
+
+  /*const testCourses = [
     {
         title: "algebra",
         rating: "3",
@@ -24,20 +32,26 @@ const signUpController = async (req, res) => {
         
 
   }
-]
+]*/
 
-  const testUser = {
+  /*const testUser = {
     _id: "testid",
     userName: "testuser",
     password: "testpassword",
     course: testCourses,
-  };
+  };*/
+
+  const user = {
+    _id: new mongoose.Types.ObjectId(),
+    userName: username,
+    password: password,
+  }
 
   
 
-  const testingUser = new User(testUser);
+  
 
-  if(await User.findById(testUser._id)){
+  if(await User.findById(user.userName)){
     res.send({ message: "User already exists" });
     return;
   }
@@ -56,10 +70,11 @@ const signUpController = async (req, res) => {
 
   //encrypt password
   bcrypt.genSalt(saltRounds, function (err, salt) {
-    bcrypt.hash(testUser.password, salt,  async function (err, hash) {
+    bcrypt.hash(user.password, salt,  async function (err, hash) {
       // change password to encrypted password and store user in database
-      testingUser.password = hash;
-      await User.create(testingUser);
+      user.password = hash;
+      
+      await User.create(new User(user));
       res.send({ message: "User is successfully signed up." });
       return;
 

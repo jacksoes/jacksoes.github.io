@@ -123,10 +123,11 @@ const dummyCourse = {
   ],
 };
 
+/*
 updateTopics(dummyCourse.topics);
 updateRating(dummyCourse.rating, "Calculus 1");
 updateResources(dummyCourse.resources)
-
+*/
 /*
  <div class="flex-pair">
             <div class="child-flex">
@@ -156,3 +157,40 @@ const getCourseData = (courseName: string, serverURI: string) => {
       updateResources(courseData.resources)
     });
 };
+
+
+const userSignup = (event) => {
+
+  event.preventDefault();
+
+
+    const username = event.target[0].value
+    const password = event.target[1].value
+    const confirmPassword = event.target[2].value
+
+
+
+
+    fetch(`${serverURI}/signUp`, {
+      method: "POST",
+      body: JSON.stringify({
+        username: username,
+        password: password
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+
+
+      });
+
+
+
+
+
+
+
+}
