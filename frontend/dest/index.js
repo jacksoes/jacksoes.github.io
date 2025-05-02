@@ -57,7 +57,7 @@ const updateResources = (resources) => {
     while (oldResources.firstChild) {
         oldResources.removeChild(oldResources.firstChild);
     }
-    resources.forEach(resource => {
+    resources.forEach((resource) => {
         let newResource = document.createElement("li");
         newResource.innerHTML = resource;
         oldResources.appendChild(newResource);
@@ -128,7 +128,7 @@ const userSignup = (event) => {
         method: "POST",
         body: JSON.stringify({
             username: username,
-            password: password
+            password: password,
         }),
         headers: {
             "Content-type": "application/json; charset=UTF-8",
@@ -136,5 +136,25 @@ const userSignup = (event) => {
     })
         .then((response) => response.json())
         .then((data) => {
+        console.log(data);
+    });
+};
+const userLogin = (event) => {
+    event.preventDefault();
+    const username = event.target[0].value;
+    const password = event.target[1].value;
+    fetch(`${serverURI}/logIn`, {
+        method: "POST",
+        body: JSON.stringify({
+            username: username,
+            password: password,
+        }),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8",
+        },
+    })
+        .then((response) => response.json())
+        .then((data) => {
+        console.log(data);
     });
 };

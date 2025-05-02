@@ -3,12 +3,10 @@
 //const serverURI = "http://localhost:3000";
 
 type Course = {
-    rating: string,
-    subjects: Array<string>,
-    resources: Array<string>
-}
-
-
+  rating: string;
+  subjects: Array<string>;
+  resources: Array<string>;
+};
 
 const serverURI: string = "http://localhost:3000";
 const addCourse = (event: Event) => {
@@ -16,9 +14,7 @@ const addCourse = (event: Event) => {
 
   const courseName: string = event.target.children[0].value;
 
-  getCourseData(courseName, serverURI)
-
- 
+  getCourseData(courseName, serverURI);
 };
 
 const updateRating = (rating: string, name: string) => {
@@ -46,7 +42,6 @@ const updateTopics = (topics: Array<string>) => {
   header.classList.add("card-title");
   header.innerHTML = "Topics covered";
   sec.appendChild(header);
-
 
   let count = 0;
   topics.forEach((topic) => {
@@ -82,21 +77,18 @@ const updateTopics = (topics: Array<string>) => {
 };
 
 const updateResources = (resources: Array<string>) => {
-
-  let oldResources: HTMLUListElement = document.querySelector("#resources-list")
+  let oldResources: HTMLUListElement =
+    document.querySelector("#resources-list");
 
   while (oldResources.firstChild) {
-      oldResources.removeChild(oldResources.firstChild);
-    }
+    oldResources.removeChild(oldResources.firstChild);
+  }
 
-  resources.forEach(resource => {
-    
-      let newResource: HTMLLIElement = document.createElement("li")
-      newResource.innerHTML = resource
-      oldResources.appendChild(newResource)
-  })
-
-
+  resources.forEach((resource) => {
+    let newResource: HTMLLIElement = document.createElement("li");
+    newResource.innerHTML = resource;
+    oldResources.appendChild(newResource);
+  });
 };
 
 const dummyCourse = {
@@ -154,43 +146,53 @@ const getCourseData = (courseName: string, serverURI: string) => {
     .then((courseData: Course) => {
       updateRating(courseData.rating, courseName);
       updateTopics(courseData.subjects);
-      updateResources(courseData.resources)
+      updateResources(courseData.resources);
     });
 };
 
-
 const userSignup = (event) => {
-
   event.preventDefault();
 
+  const username = event.target[0].value;
+  const password = event.target[1].value;
+  const confirmPassword = event.target[2].value;
 
-    const username = event.target[0].value
-    const password = event.target[1].value
-    const confirmPassword = event.target[2].value
+  fetch(`${serverURI}/signUp`, {
+    method: "POST",
+    body: JSON.stringify({
+      username: username,
+      password: password,
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+    });
 
+  
+};
 
+const userLogin = (event) => {
+  event.preventDefault();
 
+  const username = event.target[0].value;
+  const password = event.target[1].value;
 
-    fetch(`${serverURI}/signUp`, {
-      method: "POST",
-      body: JSON.stringify({
-        username: username,
-        password: password
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-
-
-      });
-
-
-
-
-
-
-
-}
+  fetch(`${serverURI}/logIn`, {
+    method: "POST",
+    body: JSON.stringify({
+      username: username,
+      password: password,
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+    });
+};

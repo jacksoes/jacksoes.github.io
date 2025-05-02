@@ -51,7 +51,7 @@ const signUpController = async (req, res) => {
 
   
 
-  if(await User.findById(user.userName)){
+  if(await User.findOne({userName : user.userName})){
     res.send({ message: "User already exists" });
     return;
   }
