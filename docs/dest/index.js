@@ -6,26 +6,16 @@ const addCourse = (event) => {
     const courseName = event.target.children[0].value;
     getCourseData(courseName, serverURI);
 };
-const updateRating = (rating, name) => {
-    const oldRating = document.querySelector("#test-rating");
-    oldRating.innerHTML = rating;
-    const oldName = document.querySelector("#test-name");
-    oldName.innerHTML = name;
-};
 const updateTopics = (topics) => {
-    const sec = document.querySelector("#section-one");
     //fill section 1 with
     //div class flexpair
     // child -> div class child flex, button class ball, div class line
     //div dic class child -felx grow
     //  child -> <p>course text
-    while (sec.firstChild) {
-        sec.removeChild(sec.firstChild);
+    const list = document.getElementById("topics-list");
+    while (list.firstChild) {
+        list.removeChild(list.firstChild);
     }
-    const header = document.createElement("h1");
-    header.classList.add("card-title");
-    header.innerHTML = "Topics covered";
-    sec.appendChild(header);
     let count = 0;
     topics.forEach((topic) => {
         const div1 = document.createElement("div");
@@ -40,7 +30,7 @@ const updateTopics = (topics) => {
         div3.classList.add("child-flex-grow");
         const yo = document.createElement("p");
         yo.innerHTML = topic;
-        sec.appendChild(div1);
+        list.appendChild(div1);
         div1.appendChild(div2);
         div2.appendChild(button);
         div2.appendChild(line);
@@ -53,15 +43,32 @@ const updateTopics = (topics) => {
     });
 };
 const updateResources = (resources) => {
-    let oldResources = document.querySelector("#resources-list");
-    while (oldResources.firstChild) {
-        oldResources.removeChild(oldResources.firstChild);
+    const list = document.getElementById("resources-list");
+    while (list.firstChild) {
+        list.removeChild(list.firstChild);
     }
     resources.forEach((resource) => {
-        let newResource = document.createElement("li");
-        newResource.innerHTML = resource;
-        oldResources.appendChild(newResource);
+        const container = document.createElement("div");
+        container.classList.add("resource-container");
+        list.appendChild(container);
+        const span = document.createElement("span");
+        span.classList.add("rl-padding");
+        container.appendChild(span);
+        const input = document.createElement("input");
+        input.setAttribute("type", "checkbox");
+        span.appendChild(input);
+        const resourceName = document.createElement("p");
+        resourceName.innerHTML = resource;
+        container.appendChild(resourceName);
     });
+    /*
+    <div class="resource-container">
+      <span class="rl-padding">
+        <input type="checkbox" />
+      </span>
+      <p>Paul's Online Math Notes</p>
+    </div>
+   */
 };
 const dummyCourse = {
     rating: "3.5",
@@ -87,7 +94,6 @@ const dummyCourse = {
     ],
 };
 /*
-updateTopics(dummyCourse.topics);
 updateRating(dummyCourse.rating, "Calculus 1");
 updateResources(dummyCourse.resources)
 */
@@ -260,15 +266,12 @@ const loadCourse = () => {
 };
 function loadSimilarCourses() {
     const dummyClasses = ["caluse1", "calculus2", "linear algebra"];
-    let parentContainer = document.querySelector(".recommended");
-    const title = document.createElement("h2");
-    title.innerHTML = "similar classes";
-    parentContainer === null || parentContainer === void 0 ? void 0 : parentContainer.appendChild(title);
+    const list = document.getElementById("similar-list");
+    while (list === null || list === void 0 ? void 0 : list.firstChild) {
+        list.removeChild(list === null || list === void 0 ? void 0 : list.firstChild);
+    }
     dummyClasses.forEach((courseName) => {
         // add sibling ->
-        const list = document.createElement("ul");
-        list.id = "similar-list";
-        title === null || title === void 0 ? void 0 : title.insertAdjacentElement("afterend", list);
         // add child ->
         const container = document.createElement("div");
         container.classList.add("resource-container");
@@ -304,6 +307,12 @@ function loadSimilarCourses() {
   
         </div>*/
 }
+updateTopics(["one", "two", "three"]);
+updateTopics(["onewadwad", "twoawdwad", "threeawdd"]);
+updateResources(["one", "two", "three"]);
+updateResources(["onewadwad", "twoawdwad", "threeawdd"]);
+loadSimilarCourses();
+loadSimilarCourses();
 loadSimilarCourses();
 loadCourse();
 loadCourse();

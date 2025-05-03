@@ -17,16 +17,8 @@ const addCourse = (event: Event) => {
   getCourseData(courseName, serverURI);
 };
 
-const updateRating = (rating: string, name: string) => {
-  const oldRating = document.querySelector("#test-rating");
-  oldRating.innerHTML = rating;
-
-  const oldName = document.querySelector("#test-name");
-  oldName.innerHTML = name;
-};
 
 const updateTopics = (topics: Array<string>) => {
-  const sec: HTMLElement = document.querySelector("#section-one");
 
   //fill section 1 with
   //div class flexpair
@@ -34,19 +26,22 @@ const updateTopics = (topics: Array<string>) => {
   //div dic class child -felx grow
   //  child -> <p>course text
 
-  while (sec.firstChild) {
-    sec.removeChild(sec.firstChild);
-  }
+ 
 
-  const header = document.createElement("h1");
-  header.classList.add("card-title");
-  header.innerHTML = "Topics covered";
-  sec.appendChild(header);
+  
+  const list = document.getElementById("topics-list");
+
+
+  while (list.firstChild) {
+    list.removeChild(list.firstChild);
+  }
 
   let count = 0;
   topics.forEach((topic) => {
+
     const div1: HTMLDivElement = document.createElement("div");
     div1.classList.add("flex-pair");
+    
 
     const div2: HTMLDivElement = document.createElement("div");
     div2.classList.add("child-flex");
@@ -63,7 +58,7 @@ const updateTopics = (topics: Array<string>) => {
     const yo: HTMLParagraphElement = document.createElement("p");
     yo.innerHTML = topic;
 
-    sec.appendChild(div1);
+    list.appendChild(div1);
     div1.appendChild(div2);
     div2.appendChild(button);
     div2.appendChild(line);
@@ -77,18 +72,51 @@ const updateTopics = (topics: Array<string>) => {
 };
 
 const updateResources = (resources: Array<string>) => {
-  let oldResources: HTMLUListElement =
-    document.querySelector("#resources-list");
 
-  while (oldResources.firstChild) {
-    oldResources.removeChild(oldResources.firstChild);
+  const list: HTMLUListElement = document.getElementById("resources-list")
+
+  while (list.firstChild) {
+    list.removeChild(list.firstChild);
   }
 
   resources.forEach((resource) => {
-    let newResource: HTMLLIElement = document.createElement("li");
-    newResource.innerHTML = resource;
-    oldResources.appendChild(newResource);
+    const container: HTMLDivElement = document.createElement("div");
+    container.classList.add("resource-container");
+    
+    list.appendChild(container);
+
+
+    const span: HTMLSpanElement = document.createElement("span");
+    span.classList.add("rl-padding");
+
+    container.appendChild(span);
+
+    const input: HTMLInputElement = document.createElement("input");
+
+    input.setAttribute("type", "checkbox");
+
+    span.appendChild(input);
+
+    const resourceName: HTMLParagraphElement = document.createElement("p");
+
+    resourceName.innerHTML = resource;
+
+    container.appendChild(resourceName);
+
+    
   });
+
+
+
+  /*
+  <div class="resource-container">
+    <span class="rl-padding">
+      <input type="checkbox" />
+    </span>
+    <p>Paul's Online Math Notes</p>
+  </div>
+ */
+  
 };
 
 const dummyCourse = {
@@ -115,8 +143,10 @@ const dummyCourse = {
   ],
 };
 
+
+
+
 /*
-updateTopics(dummyCourse.topics);
 updateRating(dummyCourse.rating, "Calculus 1");
 updateResources(dummyCourse.resources)
 */
@@ -379,10 +409,14 @@ function loadSimilarCourses() {
   const dummyClasses = ["caluse1", "calculus2", "linear algebra"]
 
 
-  let parentContainer = document.querySelector(".recommended");
-  const title: HTMLHeadElement = document.createElement("h2");
-    title.innerHTML = "similar classes"
-    parentContainer?.appendChild(title);
+  const list = document.getElementById("similar-list")
+
+  while(list?.firstChild)
+  {
+    list.removeChild(list?.firstChild);
+  }
+
+
 
 
   dummyClasses.forEach( (courseName) => {
@@ -397,10 +431,8 @@ function loadSimilarCourses() {
      
       // add sibling ->
   
-      const list: HTMLDListElement = document.createElement("ul");
-      list.id = "similar-list";
+     
   
-      title?.insertAdjacentElement("afterend", list);
   
       // add child ->
   
@@ -463,6 +495,17 @@ function loadSimilarCourses() {
 
 }
 
+updateTopics(["one", "two", "three"]);
+
+updateTopics(["onewadwad", "twoawdwad", "threeawdd"]);
+
+
+updateResources(["one", "two", "three"]);
+
+updateResources(["onewadwad", "twoawdwad", "threeawdd"]);
+
+loadSimilarCourses()
+loadSimilarCourses()
 loadSimilarCourses()
 
 

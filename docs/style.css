@@ -59,16 +59,7 @@ body {
   height: 55vh;
 }
 
-#section-one {
-  height: 90%;
-  width: 17.5dvw;
-  margin-left: 1.25dvw;
-  margin-right: 1.25dvw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-}
+
 
 .section-small-col {
   height: 90%;
