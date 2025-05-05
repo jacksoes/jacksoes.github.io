@@ -150,9 +150,10 @@ const getCourseData = (courseName, serverURI) => {
     })
         .then((response) => response.json())
         .then((courseData) => {
-        loadSimilarCourses(courseData.similarClasses);
-        loadResources(courseData.learningResources);
-        updateTopics(courseData.topicsCovered);
+        console.log("test");
+        courseData.title = courseName;
+        loadCourse(courseData);
+        localStorage.setItem(courseData._id, JSON.stringify(courseData));
     });
 };
 const userSignup = (event) => {
@@ -219,7 +220,10 @@ function removeElement(element) {
     }
     element === null || element === void 0 ? void 0 : element.remove();
 }
-const loadCourse = (courseID, courseTitle, courseRating) => {
+const loadCourse = (course) => {
+    const courseID = course._id;
+    const courseTitle = course.title;
+    const courseRating = course.rating;
     // select course-span
     let parentContainer = document.querySelector(".course-span");
     //parentContainer?.insertAdjacentElement("afterend",)
@@ -238,8 +242,7 @@ const loadCourse = (courseID, courseTitle, courseRating) => {
     closeButton.classList.add("course-close-button");
     closeButton.innerHTML = "X";
     //add even listener to remove by id
-    //courseContainer.id = courseID;
-    const courseToRemove = document.getElementById(courseID);
+    const courseToRemove = document.getElementById(courseContainer.id);
     closeButton.addEventListener("click", () => removeElement(courseToRemove));
     closeButtonContainer === null || closeButtonContainer === void 0 ? void 0 : closeButtonContainer.appendChild(closeButton);
     //add sibling ->
@@ -272,6 +275,10 @@ const loadCourse = (courseID, courseTitle, courseRating) => {
     button.innerHTML = "details";
     button.addEventListener("click", () => selectCourse(courseID, button));
     buttonContainer.appendChild(button);
+    console.log(course);
+    loadSimilarCourses(course.similarClasses);
+    loadResources(course.learningResources);
+    updateTopics(course.topicsCovered);
     /*
       <span class="course-span">
     
@@ -340,12 +347,12 @@ function selectCourse(courseID, button) {
     console.log(courseID);
     // make button = selected
     button.style.background = "#006633";
+    let course = localStorage.getItem(courseID);
+    course = JSON.parse(course);
     // load topics
-    loadSimilarCourses(dummyCourse.similarClasses);
-    loadResources(dummyCourse.learningResources);
-    updateTopics(dummyCourse.topicsCovered);
+    loadSimilarCourses(course.similarClasses);
+    loadResources(course.learningResources);
+    updateTopics(course.topicsCovered);
     //load resources
     //load similar classe
 }
-loadCourse(dummyCourse._id, dummyCourse.title, dummyCourse.rating);
-loadCourse(dummyCourse2._id, dummyCourse2.title, dummyCourse2.rating);

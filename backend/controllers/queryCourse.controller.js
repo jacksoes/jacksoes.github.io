@@ -1,5 +1,7 @@
 const model = require('../config-gemini.js');
 
+const mongoose = require("mongoose");
+
 const queryCourseController = async (req, res) => {
   console.log('query course controller ran');
 
@@ -21,6 +23,7 @@ const queryCourseController = async (req, res) => {
   const promptReponses = result.response.text().split('~~^%');
 
   const courseData = {
+    _id: new mongoose.Types.ObjectId(),
     rating: promptReponses[0],
     similarClasses: promptReponses[1].split('^^~~'),
     topicsCovered: promptReponses[2].split('^^~~'),

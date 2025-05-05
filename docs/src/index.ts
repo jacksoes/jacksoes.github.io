@@ -213,11 +213,12 @@ const getCourseData = (courseName: string, serverURI: string) => {
   })
     .then((response) => response.json())
     .then((courseData: Course) => {
-      
 
-      loadSimilarCourses(courseData.similarClasses);
-      loadResources(courseData.learningResources);
-      updateTopics(courseData.topicsCovered);
+      console.log("test")
+      courseData.title = courseName
+      
+      loadCourse(courseData);
+      localStorage.setItem(courseData._id, JSON.stringify(courseData))
     });
 };
 
@@ -308,10 +309,12 @@ function removeElement(element) {
 }
 
 
-const loadCourse = (courseID, courseTitle, courseRating) => {
+const loadCourse = (course: Course) => {
 
 
-
+  const courseID = course._id
+  const courseTitle = course.title
+  const courseRating = course.rating
 
 
   // select course-span
@@ -348,8 +351,7 @@ const loadCourse = (courseID, courseTitle, courseRating) => {
   closeButton.classList.add("course-close-button");
   closeButton.innerHTML = "X"
   //add even listener to remove by id
-  //courseContainer.id = courseID;
-  const courseToRemove = document.getElementById(courseID);
+  const courseToRemove = document.getElementById(courseContainer.id);
   closeButton.addEventListener("click", () => removeElement(courseToRemove)); 
 
 
@@ -409,6 +411,13 @@ const loadCourse = (courseID, courseTitle, courseRating) => {
     button.addEventListener("click", () => selectCourse(courseID, button))
 
     buttonContainer.appendChild(button);
+
+    console.log(course)
+
+
+    loadSimilarCourses(course.similarClasses);
+    loadResources(course.learningResources);
+    updateTopics(course.topicsCovered);
 
 
 
@@ -548,11 +557,14 @@ function selectCourse(courseID, button){
   // make button = selected
   button.style.background = "#006633"
 
+  let course = localStorage.getItem(courseID);
+  course = JSON.parse(course);
+
 
   // load topics
-  loadSimilarCourses(dummyCourse.similarClasses);
-  loadResources(dummyCourse.learningResources);
-  updateTopics(dummyCourse.topicsCovered);
+  loadSimilarCourses(course.similarClasses);
+  loadResources(course.learningResources);
+  updateTopics(course.topicsCovered);
 
   //load resources
 
@@ -564,6 +576,4 @@ function selectCourse(courseID, button){
 
 
 
-loadCourse(dummyCourse._id, dummyCourse.title, dummyCourse.rating);
 
-loadCourse(dummyCourse2._id, dummyCourse2.title, dummyCourse2.rating);
