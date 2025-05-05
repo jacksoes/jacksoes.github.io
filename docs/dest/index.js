@@ -5,6 +5,7 @@ const addCourse = (event) => {
     event.preventDefault();
     const courseName = event.target.children[0].value;
     getCourseData(courseName, serverURI);
+    // add if user is logged in
 };
 const updateTopics = (topics) => {
     //fill section 1 with
@@ -42,7 +43,7 @@ const updateTopics = (topics) => {
             div2.removeChild(div2.lastChild);
     });
 };
-const updateResources = (resources) => {
+const loadResources = (resources) => {
     const list = document.getElementById("resources-list");
     while (list.firstChild) {
         list.removeChild(list.firstChild);
@@ -71,8 +72,11 @@ const updateResources = (resources) => {
    */
 };
 const dummyCourse = {
+    _id: "testinggg",
+    title: "alebra",
     rating: "3.5",
-    topics: [
+    similarClasses: ["calc1", "calc2", "linear algebra"],
+    topicsCovered: [
         "\nLimits and Continuity",
         "Derivatives",
         "Applications of Derivatives",
@@ -82,7 +86,7 @@ const dummyCourse = {
         "Differential Equations",
         "Functions",
     ],
-    resources: [
+    learningResources: [
         "\nTextbook",
         "Online Homework System",
         "Professor's Office Hours",
@@ -93,9 +97,35 @@ const dummyCourse = {
         "Calculus Study Guides",
     ],
 };
+const dummyCourse2 = {
+    _id: "testingggadwwad",
+    title: "calculus1",
+    rating: "4",
+    similarClasses: ["calc1", "calc2", "linear algebra"],
+    topicsCovered: [
+        "\nLimits and CoASSSSDADSDADy",
+        "DeASSSSDADSDADes",
+        "Applications of DeASSSSDADSDADes",
+        "IASSSSDADSDADs",
+        "Techniques of IASSSSDADSDADion",
+        "Sequences anASSSSDADSDADs",
+        "DifferentialASSSSDADSDADons",
+        "FASSSSDADSDAD"
+    ],
+    learningResources: [
+        "\nASSSSDADSDADk",
+        "OnlASSSSDADSDADework System",
+        "Professor'ASSSSDADSDADe Hours",
+        "Teaching AASSSSDADSDADt Sessions",
+        "OnlinASSSSDADSDADs",
+        "KhanASSSSDADSDADy",
+        "PaulASSSSDADSDADne Math Notes",
+        "Calculus ASSSSDADSDADuides",
+    ],
+};
 /*
 updateRating(dummyCourse.rating, "Calculus 1");
-updateResources(dummyCourse.resources)
+loadResources(dummyCourse.resources)
 */
 /*
  <div class="flex-pair">
@@ -120,9 +150,9 @@ const getCourseData = (courseName, serverURI) => {
     })
         .then((response) => response.json())
         .then((courseData) => {
-        updateRating(courseData.rating, courseName);
-        updateTopics(courseData.subjects);
-        updateResources(courseData.resources);
+        loadSimilarCourses(courseData.similarClasses);
+        loadResources(courseData.learningResources);
+        updateTopics(courseData.topicsCovered);
     });
 };
 const userSignup = (event) => {
@@ -143,6 +173,7 @@ const userSignup = (event) => {
         .then((response) => response.json())
         .then((data) => {
         console.log(data);
+        // store data in local storage
     });
 };
 const userLogin = (event) => {
@@ -188,10 +219,7 @@ function removeElement(element) {
     }
     element === null || element === void 0 ? void 0 : element.remove();
 }
-const loadCourse = () => {
-    const courseTitle = "alge";
-    const courseRating = "3.0";
-    const courseID = "testid";
+const loadCourse = (courseID, courseTitle, courseRating) => {
     // select course-span
     let parentContainer = document.querySelector(".course-span");
     //parentContainer?.insertAdjacentElement("afterend",)
@@ -242,6 +270,7 @@ const loadCourse = () => {
     const button = document.createElement("button");
     button.classList.add("course-button");
     button.innerHTML = "details";
+    button.addEventListener("click", () => selectCourse(courseID, button));
     buttonContainer.appendChild(button);
     /*
       <span class="course-span">
@@ -264,13 +293,12 @@ const loadCourse = () => {
       </div>
     */
 };
-function loadSimilarCourses() {
-    const dummyClasses = ["caluse1", "calculus2", "linear algebra"];
+function loadSimilarCourses(similarCourses) {
     const list = document.getElementById("similar-list");
     while (list === null || list === void 0 ? void 0 : list.firstChild) {
         list.removeChild(list === null || list === void 0 ? void 0 : list.firstChild);
     }
-    dummyClasses.forEach((courseName) => {
+    similarCourses.forEach((courseName) => {
         // add sibling ->
         // add child ->
         const container = document.createElement("div");
@@ -307,15 +335,17 @@ function loadSimilarCourses() {
   
         </div>*/
 }
-updateTopics(["one", "two", "three"]);
-updateTopics(["onewadwad", "twoawdwad", "threeawdd"]);
-updateResources(["one", "two", "three"]);
-updateResources(["onewadwad", "twoawdwad", "threeawdd"]);
-loadSimilarCourses();
-loadSimilarCourses();
-loadSimilarCourses();
-loadCourse();
-loadCourse();
-loadCourse();
-loadCourse();
-loadCourse();
+function selectCourse(courseID, button) {
+    //find course by course id
+    console.log(courseID);
+    // make button = selected
+    button.style.background = "#006633";
+    // load topics
+    loadSimilarCourses(dummyCourse.similarClasses);
+    loadResources(dummyCourse.learningResources);
+    updateTopics(dummyCourse.topicsCovered);
+    //load resources
+    //load similar classe
+}
+loadCourse(dummyCourse._id, dummyCourse.title, dummyCourse.rating);
+loadCourse(dummyCourse2._id, dummyCourse2.title, dummyCourse2.rating);

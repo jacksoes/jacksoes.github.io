@@ -3,9 +3,12 @@
 //const serverURI = "http://localhost:3000";
 
 type Course = {
+  _id: string;
+  title: string;
   rating: string;
-  subjects: Array<string>;
-  resources: Array<string>;
+  similarClasses: Array<string>;
+  topicsCovered: Array<string>;
+  learningResources: Array<string>;
 };
 
 const serverURI: string = "http://localhost:3000";
@@ -15,6 +18,10 @@ const addCourse = (event: Event) => {
   const courseName: string = event.target.children[0].value;
 
   getCourseData(courseName, serverURI);
+
+  // add if user is logged in
+
+
 };
 
 
@@ -71,7 +78,7 @@ const updateTopics = (topics: Array<string>) => {
   });
 };
 
-const updateResources = (resources: Array<string>) => {
+const loadResources = (resources: Array<string>) => {
 
   const list: HTMLUListElement = document.getElementById("resources-list")
 
@@ -120,8 +127,12 @@ const updateResources = (resources: Array<string>) => {
 };
 
 const dummyCourse = {
+  _id: "testinggg",
+  title: "alebra",
+
   rating: "3.5",
-  topics: [
+  similarClasses: ["calc1", "calc2", "linear algebra"],
+  topicsCovered: [
     "\nLimits and Continuity",
     "Derivatives",
     "Applications of Derivatives",
@@ -131,7 +142,7 @@ const dummyCourse = {
     "Differential Equations",
     "Functions",
   ],
-  resources: [
+  learningResources: [
     "\nTextbook",
     "Online Homework System",
     "Professor's Office Hours",
@@ -144,11 +155,39 @@ const dummyCourse = {
 };
 
 
+const dummyCourse2 = {
+  _id: "testingggadwwad",
+  title: "calculus1",
+
+  rating: "4",
+  similarClasses: ["calc1", "calc2", "linear algebra"],
+  topicsCovered: [
+    "\nLimits and CoASSSSDADSDADy",
+    "DeASSSSDADSDADes",
+    "Applications of DeASSSSDADSDADes",
+    "IASSSSDADSDADs",
+    "Techniques of IASSSSDADSDADion",
+    "Sequences anASSSSDADSDADs",
+    "DifferentialASSSSDADSDADons",
+    "FASSSSDADSDAD"],
+  learningResources: [
+    "\nASSSSDADSDADk",
+    "OnlASSSSDADSDADework System",
+    "Professor'ASSSSDADSDADe Hours",
+    "Teaching AASSSSDADSDADt Sessions",
+    "OnlinASSSSDADSDADs",
+    "KhanASSSSDADSDADy",
+    "PaulASSSSDADSDADne Math Notes",
+    "Calculus ASSSSDADSDADuides",
+  ],
+};
+
+
 
 
 /*
 updateRating(dummyCourse.rating, "Calculus 1");
-updateResources(dummyCourse.resources)
+loadResources(dummyCourse.resources)
 */
 /*
  <div class="flex-pair">
@@ -174,9 +213,11 @@ const getCourseData = (courseName: string, serverURI: string) => {
   })
     .then((response) => response.json())
     .then((courseData: Course) => {
-      updateRating(courseData.rating, courseName);
-      updateTopics(courseData.subjects);
-      updateResources(courseData.resources);
+      
+
+      loadSimilarCourses(courseData.similarClasses);
+      loadResources(courseData.learningResources);
+      updateTopics(courseData.topicsCovered);
     });
 };
 
@@ -200,6 +241,9 @@ const userSignup = (event) => {
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
+
+      // store data in local storage
+
     });
 
   
@@ -264,12 +308,8 @@ function removeElement(element) {
 }
 
 
-const loadCourse = () => {
+const loadCourse = (courseID, courseTitle, courseRating) => {
 
-  const courseTitle = "alge"
-  const courseRating = "3.0"
-
-  const courseID = "testid";
 
 
 
@@ -366,6 +406,8 @@ const loadCourse = () => {
 
     button.innerHTML = "details"
 
+    button.addEventListener("click", () => selectCourse(courseID, button))
+
     buttonContainer.appendChild(button);
 
 
@@ -404,9 +446,8 @@ const loadCourse = () => {
 }
 
 
-function loadSimilarCourses() {
+function loadSimilarCourses(similarCourses) {
 
-  const dummyClasses = ["caluse1", "calculus2", "linear algebra"]
 
 
   const list = document.getElementById("similar-list")
@@ -419,7 +460,7 @@ function loadSimilarCourses() {
 
 
 
-  dummyClasses.forEach( (courseName) => {
+  similarCourses.forEach( (courseName) => {
 
 
     
@@ -468,6 +509,8 @@ function loadSimilarCourses() {
 
   })
 
+  
+
  
 
 
@@ -495,23 +538,32 @@ function loadSimilarCourses() {
 
 }
 
-updateTopics(["one", "two", "three"]);
 
-updateTopics(["onewadwad", "twoawdwad", "threeawdd"]);
-
-
-updateResources(["one", "two", "three"]);
-
-updateResources(["onewadwad", "twoawdwad", "threeawdd"]);
-
-loadSimilarCourses()
-loadSimilarCourses()
-loadSimilarCourses()
+function selectCourse(courseID, button){
 
 
+  //find course by course id
 
-loadCourse();
-loadCourse();
-loadCourse();
-loadCourse();
-loadCourse();
+  console.log(courseID);
+  // make button = selected
+  button.style.background = "#006633"
+
+
+  // load topics
+  loadSimilarCourses(dummyCourse.similarClasses);
+  loadResources(dummyCourse.learningResources);
+  updateTopics(dummyCourse.topicsCovered);
+
+  //load resources
+
+  //load similar classe
+
+}
+
+
+
+
+
+loadCourse(dummyCourse._id, dummyCourse.title, dummyCourse.rating);
+
+loadCourse(dummyCourse2._id, dummyCourse2.title, dummyCourse2.rating);

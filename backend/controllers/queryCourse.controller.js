@@ -8,11 +8,12 @@ const queryCourseController = async (req, res) => {
   const course = req.body.courseName;
   //prompts
   const promptRating = `Rate the difficulty of the course out of 5: ${course}. Return only a length 3 decimial in the format $.$`;
-  const promptSubject = `give me a list of subjects in the course : ${course}. Return only a string with the format '$^^~~$^^~~$ ...etc' the $'s are the list contents. Try to give me a list of 8 subjects if possible.`;
+  const promptSubject = `give me a list of subjects in the course : ${course}. Return only a string with the format '$^^~~$^^~~$ ...etc' the $'s are the list contents.`;
+  const promptSimilar = `give me a list of similar classes to the course : ${course}. Return only a string with the format '$^^~~$^^~~$ ...etc' the $'s are the list contents.`;
   const promptResource = `give me a list of resources that will be useful in the course: ${course}. Return only a string with the format '$^^~~$^^~~$ ...etc' the $'s are the list contents.`;
 
   //prompt as one request
-  const prompt = `separate your answer to these 3 promps with the string: ~~^%. prompt 1: ${promptRating}, prompt 2: ${promptSubject}, prompt 3: ${promptResource}`;
+  const prompt = `separate your answer to these 3 promps with the string: ~~^%. prompt 1: ${promptRating}, prompt 2: ${promptSimilar}, prompt 3: ${promptSubject}, promp 4: ${promptResource}`;
 
   const result = await model.generateContent(prompt);
 
@@ -21,13 +22,14 @@ const queryCourseController = async (req, res) => {
 
   const courseData = {
     rating: promptReponses[0],
-    subjects: promptReponses[1].split('^^~~'),
-    resources: promptReponses[2].split('^^~~'),
+    similarClasses: promptReponses[1].split('^^~~'),
+    topicsCovered: promptReponses[2].split('^^~~'),
+    learningResources: promptReponses[3].split('^^~~'),
   };
 
-  console.log(courseData.rating);
-  console.log(courseData.subjects);
-  console.log(courseData.resources);
+  //console.log(courseData.rating);
+  //console.log(courseData.subjects);
+ // console.log(courseData.resources);
   res.json(courseData);
   /*
 
