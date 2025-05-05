@@ -242,8 +242,8 @@ const loadCourse = (course) => {
     closeButton.classList.add("course-close-button");
     closeButton.innerHTML = "X";
     //add even listener to remove by id
-    const courseToRemove = document.getElementById(courseContainer.id);
-    closeButton.addEventListener("click", () => removeElement(courseToRemove));
+    const courseToRemove = document.getElementById(courseID);
+    closeButton.addEventListener("click", () => { removeElement(courseToRemove); localStorage.removeItem(courseID); });
     closeButtonContainer === null || closeButtonContainer === void 0 ? void 0 : closeButtonContainer.appendChild(closeButton);
     //add sibling ->
     const titleSpan = document.createElement("span");
@@ -346,7 +346,13 @@ function selectCourse(courseID, button) {
     //find course by course id
     console.log(courseID);
     // make button = selected
-    button.style.background = "#006633";
+    //if button is already selected
+    if (button.style.background === 'rgb(0, 102, 51)' || button.style.background === "#006633") {
+        button.style.background = "unset";
+    } // else select
+    else {
+        button.style.background = "#006633";
+    }
     let course = localStorage.getItem(courseID);
     course = JSON.parse(course);
     // load topics
@@ -356,3 +362,10 @@ function selectCourse(courseID, button) {
     //load resources
     //load similar classe
 }
+function main() {
+    //get each course from local storage
+    Object.keys(localStorage).forEach(function (key) {
+        loadCourse(JSON.parse(localStorage.getItem(key)));
+    });
+}
+main();

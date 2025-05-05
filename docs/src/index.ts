@@ -2,6 +2,9 @@
 
 //const serverURI = "http://localhost:3000";
 
+
+
+
 type Course = {
   _id: string;
   title: string;
@@ -351,8 +354,8 @@ const loadCourse = (course: Course) => {
   closeButton.classList.add("course-close-button");
   closeButton.innerHTML = "X"
   //add even listener to remove by id
-  const courseToRemove = document.getElementById(courseContainer.id);
-  closeButton.addEventListener("click", () => removeElement(courseToRemove)); 
+  const courseToRemove = document.getElementById(courseID);
+  closeButton.addEventListener("click", () => {removeElement(courseToRemove); localStorage.removeItem(courseID)}); 
 
 
   closeButtonContainer?.appendChild(closeButton);
@@ -555,8 +558,15 @@ function selectCourse(courseID, button){
 
   console.log(courseID);
   // make button = selected
-  button.style.background = "#006633"
 
+  //if button is already selected
+  if(button.style.background === 'rgb(0, 102, 51)' || button.style.background === "#006633")
+  {
+    button.style.background = "unset";
+  } // else select
+  else{
+    button.style.background = "#006633"
+  }
   let course = localStorage.getItem(courseID);
   course = JSON.parse(course);
 
@@ -573,6 +583,19 @@ function selectCourse(courseID, button){
 }
 
 
+
+function main () {
+  //get each course from local storage
+  Object.keys(localStorage).forEach(function(key){
+
+    loadCourse(JSON.parse(localStorage.getItem(key)))
+ })
+  
+
+
+}
+
+main();
 
 
 
