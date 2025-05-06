@@ -560,13 +560,13 @@ function selectCourse(courseID, button){
   // make button = selected
 
   //if button is already selected
-  if(button.style.background === 'rgb(0, 102, 51)' || button.style.background === "#006633")
+ /* if(button.style.background === 'rgb(0, 102, 51)' || button.style.background === "#006633")
   {
     button.style.background = "unset";
   } // else select
   else{
     button.style.background = "#006633"
-  }
+  }*/
   let course = localStorage.getItem(courseID);
   course = JSON.parse(course);
 
