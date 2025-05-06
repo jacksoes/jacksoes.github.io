@@ -814,7 +814,7 @@ div.innerHTML = `<div class="form-container card">
     
     <button class="course-button">Log In</button>
     <br>
-    <button class="button-minimal"> Sign Up </button>
+    <button class="button-minimal" onclick="loadSignup()"> Sign Up </button>
   </div>
 </form>
 </div>`
@@ -872,7 +872,7 @@ div.innerHTML = `<div class="form-container card">
           </label
           >
           <button class="course-button">Sign Up</button>
-          <button class="button-minimal" type="button"> Log In </button>
+          <button class="button-minimal" type="button" onclick="loadLogin()"> Log In </button>
         </div>
       </form>
     </div>`
@@ -899,4 +899,4 @@ main();
 
 
 //loadSignup();
-loadLogin()
+//loadLogin()
