@@ -1,6 +1,6 @@
-const serverURI: string = "http://34.230.81.200:3000";
+const serverURI: string = "http://3.217.238.48:3000";
 
-//const serverURI = "http://localhost:3000"
+//const serverURI = "http://localhost:3000";
 
 
 
