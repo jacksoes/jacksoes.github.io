@@ -1,6 +1,6 @@
 "use strict";
-//const serverURI = "https://airatemyclasses-server.onrender.com/"
-const serverURI = "http://localhost:3000";
+const serverURI = "http://34.230.81.200:3000";
+//const serverURI: string = "http://localhost:3000";
 const addCourse = (event) => {
     event.preventDefault();
     const courseName = event.target.children[0].value;
@@ -344,6 +344,7 @@ function loadSimilarCourses(similarCourses) {
 }
 function selectCourse(courseID, button) {
     //find course by course id
+    //bc010e6ed25b802da7eb
     console.log(courseID);
     // make button = selected
     //if button is already selected
