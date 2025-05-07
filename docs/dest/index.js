@@ -646,10 +646,12 @@ function loadSignup() {
 }
 function main() {
     //get each course from local storage
-    Object.keys(localStorage).forEach(function (key) {
-        loadCourse(JSON.parse(localStorage.getItem(key)));
-    });
+    //if(Object.keys(localStorage).length > 0){
+    // Object.keys(localStorage).forEach(function(key){
+    //  loadCourse(JSON.parse(localStorage.getItem(key)))
+    // })
+    //  }
 }
-main();
+//main();
 //loadSignup();
 //loadLogin()
