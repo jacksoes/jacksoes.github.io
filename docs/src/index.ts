@@ -886,17 +886,19 @@ document.body.appendChild(div);
 
 function main () {
   //get each course from local storage
-  if(Object.keys(localStorage).length > 0){
+  
     Object.keys(localStorage).forEach(function(key){
-
-    loadCourse(JSON.parse(localStorage.getItem(key)))
+      // to do: better type checking for if its a course
+      if(key?.charAt(0) == '6')
+      {
+        loadCourse(JSON.parse(localStorage.getItem(key)));
+      }
  })
-  }
 
 
 }
 
-//main();
+main();
 
 
 //loadSignup();
