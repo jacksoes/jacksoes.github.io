@@ -886,12 +886,12 @@ document.body.appendChild(div);
 
 function main () {
   //get each course from local storage
-  //if(Object.keys(localStorage).length > 0){
- // Object.keys(localStorage).forEach(function(key){
+  if(Object.keys(localStorage).length > 0){
+    Object.keys(localStorage).forEach(function(key){
 
-  //  loadCourse(JSON.parse(localStorage.getItem(key)))
-// })
-//  }
+    loadCourse(JSON.parse(localStorage.getItem(key)))
+ })
+  }
 
 
 }
