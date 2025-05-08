@@ -25,6 +25,7 @@ const queryCourseController = async (req, res) => {
 
   const courseData = {
     _id: new mongoose.Types.ObjectId(),
+    title: course,
     rating: promptReponses[0],
     similarClasses: promptReponses[1].split('^^~~'),
     topicsCovered: promptReponses[2].split('^^~~'),
