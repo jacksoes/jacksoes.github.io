@@ -46,7 +46,10 @@ const queryCourseController = async (req, res) => {
     return;
   }
 
-  User.updateOne({_id: req.cookies.userID}, {$push: {course: courseData}})
+
+  const userID = req.cookies.userID;
+
+  await User.findByIdAndUpdate(userID, {$push : {course: course} });
 
   //res.send("course was added");
   return;

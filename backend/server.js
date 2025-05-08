@@ -44,7 +44,7 @@ app.post("/", async function(req,res){
 })
 */
 
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
   console.log(`listening at port ${port}`);
 });
 // '0.0.0.0',

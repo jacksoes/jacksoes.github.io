@@ -1,6 +1,5 @@
 "use strict";
-//const serverURI: string = "http://3.217.238.48:3000";
-const serverURI = "http://localhost:3000";
+const serverURI = "http://3.217.238.48:3000";
 //const serverURI: string = "http://localhost:3000";
 const addCourse = (event) => {
     event.preventDefault();
