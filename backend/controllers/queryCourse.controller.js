@@ -1,6 +1,7 @@
 const model = require('../config-gemini.js');
 
 const mongoose = require("mongoose");
+const User = require("../models/users.models.js")
 
 const queryCourseController = async (req, res) => {
   console.log('query course controller ran');
@@ -40,7 +41,16 @@ const queryCourseController = async (req, res) => {
             promptSubject: `give me a list of subjects that will be learned in the class: ${courseName} format it as a javscript array like so [$, $, $, $] the $ are strings of topics typically covered.`,
             promptResource: `give me a list of resources that will be useful in the class: ${courseName} format it as a javscript array like so [$, $, $, $] the $ are strings of resources such as websites or books when taking the specified class.`,
             */
-            console.log(req.cookies)
+  if(!req.cookies.userID)
+  {
+    return;
+  }
+
+  User.updateOne({_id: req.cookies.userID}, {$push: {course: courseData}};)
+
+  //res.send("course was added");
+  return;
+
 };
 
 
