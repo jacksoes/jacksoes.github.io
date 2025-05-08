@@ -26,6 +26,8 @@ const addCourseController = async (req, res) =>{
     // add it to database with for correct user.
     await User.findByIdAndUpdate(userID, {$push : {course: course} });
 
+
+
     
 
      

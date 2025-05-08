@@ -1,5 +1,6 @@
 "use strict";
-const serverURI = "http://3.217.238.48:3000";
+//const serverURI: string = "http://3.217.238.48:3000";
+const serverURI = "http://localhost:3000";
 //const serverURI: string = "http://localhost:3000";
 const addCourse = (event) => {
     event.preventDefault();
@@ -195,7 +196,7 @@ const userLogin = (event) => {
         .then((data) => {
         console.log(data);
         console.log(data.userID);
-        document.cookie = "test=testcookies";
+        document.cookie = `userID=${data.userID}`;
     });
 };
 function showCookies() {

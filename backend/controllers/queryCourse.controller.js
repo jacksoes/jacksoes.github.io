@@ -41,5 +41,6 @@ const queryCourseController = async (req, res) => {
             promptResource: `give me a list of resources that will be useful in the class: ${courseName} format it as a javscript array like so [$, $, $, $] the $ are strings of resources such as websites or books when taking the specified class.`,
             */
 };
+console.log(req.cookies)
 
 module.exports = queryCourseController;
