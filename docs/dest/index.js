@@ -141,6 +141,7 @@ loadResources(dummyCourse.resources)
 const getCourseData = (courseName, serverURI) => {
     fetch(`${serverURI}/queryCourse`, {
         method: "POST",
+        credentials: "include",
         body: JSON.stringify({
             courseName: courseName,
         }),
@@ -174,7 +175,7 @@ const userSignup = (event) => {
         .then((response) => response.json())
         .then((data) => {
         console.log(data);
-        // store data in local storage
+        // store data in local storag
     });
 };
 const userLogin = (event) => {
