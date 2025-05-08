@@ -49,7 +49,7 @@ const queryCourseController = async (req, res) => {
 
   const userID = req.cookies.userID;
 
-  await User.findByIdAndUpdate(userID, {$push : {course: course} });
+  await User.findByIdAndUpdate(userID, {$push : {course: courseData} });
 
   //res.send("course was added");
   return;
