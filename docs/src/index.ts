@@ -286,6 +286,13 @@ const userLogin = async (event) => {
       .then((response) => response.json())
       .then((data) => {
         console.log("courses are: ", data.courses);
+        localStorage.clear();
+        data.courses.forEach((course) =>{
+          localStorage.setItem(course._id, JSON.stringify(course))
+
+        } )
+        main();
+
       });
   
 };

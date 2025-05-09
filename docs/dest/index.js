@@ -216,6 +216,11 @@ const userLogin = (event) => __awaiter(void 0, void 0, void 0, function* () {
         .then((response) => response.json())
         .then((data) => {
         console.log("courses are: ", data.courses);
+        localStorage.clear();
+        data.courses.forEach((course) => {
+            localStorage.setItem(course._id, JSON.stringify(course));
+        });
+        main();
     });
 });
 function showCookies() {
