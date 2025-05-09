@@ -275,6 +275,8 @@ const userLogin = async (event) => {
       console.log(data);
       console.log(data.userID);
       document.cookie = `userID=${data.userID}`;
+      let name = document.querySelector("#usernameContainer");
+      name?.innerHTML = username;
     });
 
     fetch(`${serverURI}/add`, {
@@ -921,6 +923,13 @@ function removeCourse(courseID) {
       console.log(data)
     });
 
+}
+
+function logout(){
+  document.cookie = "userID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  localStorage.clear();
+  let name = document.querySelector("#usernameContainer");
+  name?.innerHTML = "";
 }
 
 

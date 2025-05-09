@@ -206,6 +206,8 @@ const userLogin = (event) => __awaiter(void 0, void 0, void 0, function* () {
         console.log(data);
         console.log(data.userID);
         document.cookie = `userID=${data.userID}`;
+        let name = document.querySelector("#usernameContainer");
+        name === null || name === void 0 ? void 0 : name.innerHTML = username;
     });
     fetch(`${serverURI}/add`, {
         credentials: "include",
@@ -684,6 +686,12 @@ function removeCourse(courseID) {
         .then((data) => {
         console.log(data);
     });
+}
+function logout() {
+    document.cookie = "userID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    localStorage.clear();
+    let name = document.querySelector("#usernameContainer");
+    name === null || name === void 0 ? void 0 : name.innerHTML = "";
 }
 function main() {
     //get each course from local storage
