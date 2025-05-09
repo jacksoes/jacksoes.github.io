@@ -2,7 +2,6 @@ const serverURI: string = "http://3.217.238.48:3000";
 
 //const serverURI = "http://localhost:3000";
 
-let totalDifficulty = 0;
 
 
 type Course = {
@@ -948,6 +947,7 @@ function logout(){
 
 function main () {
   //get each course from local storage
+  let totalDifficulty = 0;
   let courseCount = 0;
   
     Object.keys(localStorage).forEach(function(key){
@@ -958,15 +958,19 @@ function main () {
         let difficulty = JSON.parse(localStorage.getItem(key))
         difficulty = difficulty.rating
         difficulty = parseFloat(difficulty);
-        totalDifficulty += JSON.parse(localStorage.getItem(key))
+        totalDifficulty += difficulty;
 
         courseCount++;
       }
  })
-totalDifficulty = totalDifficulty / courseCount;
- let diff = document.querySelector("#diff")
 
- diff?.innerHTML = totalDifficulty;
+if(totalDifficulty != 0)
+{
+  totalDifficulty = totalDifficulty / courseCount;
+  let diff = document.querySelector("#diff")
+  diff?.innerHTML = totalDifficulty;
+}
+
  
 
 
