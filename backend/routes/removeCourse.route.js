@@ -5,4 +5,4 @@ const removeCourseController = require("../controllers/removeCourse.controller.j
 removeCourseRouter.post("/remove", removeCourseController);
 
 
-module.exports = removeCourseController;
+module.exports = removeCourseRouter;

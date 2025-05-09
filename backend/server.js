@@ -25,7 +25,7 @@ async function main() {
   app.use('/', signUpRouter);
   app.use('/', logInRouter);
   app.use("/", addCourseRouter)
-  app.use("/", removeCourseController);
+  app.use("/", removeCourseRouter);
 
   //console.log(result.response.text())
 }
