@@ -346,6 +346,7 @@ function loadSimilarCourses(similarCourses) {
         const button = document.createElement("button");
         button.classList.add("green-small-button");
         button.innerHTML = "+";
+        button.addEventListener("click", () => getCourseData(courseName, serverURI));
         span.appendChild(button);
         // add sibling to span ->
         const name = document.createElement("p");

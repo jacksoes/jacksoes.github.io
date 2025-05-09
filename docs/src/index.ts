@@ -528,6 +528,8 @@ function loadSimilarCourses(similarCourses) {
       const button: HTMLButtonElement = document.createElement("button");
       button.classList.add("green-small-button");
       button.innerHTML = "+";
+      button.addEventListener("click", () => getCourseData(courseName, serverURI))
+
   
       span.appendChild(button);
   

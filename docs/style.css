@@ -272,6 +272,9 @@ body {
   width: 2rem;
   border-radius: 0.25rem;
 }
+.green-small-button:hover {
+  cursor: pointer;
+}
 
 .form-container {
   height: 50vh;
