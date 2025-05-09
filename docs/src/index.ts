@@ -930,6 +930,7 @@ function logout(){
   localStorage.clear();
   let name = document.querySelector("#usernameContainer");
   name?.innerHTML = "";
+  main();
 }
 
 

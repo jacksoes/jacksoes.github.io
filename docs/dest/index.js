@@ -692,6 +692,7 @@ function logout() {
     localStorage.clear();
     let name = document.querySelector("#usernameContainer");
     name === null || name === void 0 ? void 0 : name.innerHTML = "";
+    main();
 }
 function main() {
     //get each course from local storage
