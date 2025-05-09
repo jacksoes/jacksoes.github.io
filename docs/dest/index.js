@@ -215,7 +215,7 @@ const userLogin = (event) => __awaiter(void 0, void 0, void 0, function* () {
     })
         .then((response) => response.json())
         .then((data) => {
-        console.log("courses are: " + data.courses);
+        console.log("courses are: ", data.courses);
     });
 });
 function showCookies() {

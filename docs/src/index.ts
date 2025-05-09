@@ -285,7 +285,7 @@ const userLogin = async (event) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("courses are: " + data.courses)
+        console.log("courses are: ", data.courses);
       });
   
 };
