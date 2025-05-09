@@ -2,7 +2,7 @@ const serverURI: string = "http://3.217.238.48:3000";
 
 //const serverURI = "http://localhost:3000";
 
-const totalDifficulty = 0;
+let totalDifficulty = 0;
 
 
 type Course = {
@@ -964,7 +964,7 @@ function main () {
       }
  })
 totalDifficulty = totalDifficulty / courseCount;
- const diff = document.querySelector("#diff")
+ let diff = document.querySelector("#diff")
 
  diff?.innerHTML = totalDifficulty;
  

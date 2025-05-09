@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 const serverURI = "http://3.217.238.48:3000";
 //const serverURI = "http://localhost:3000";
-const totalDifficulty = 0;
+let totalDifficulty = 0;
 //const serverURI: string = "http://localhost:3000";
 const addCourse = (event) => {
     event.preventDefault();
@@ -715,7 +715,7 @@ function main() {
         }
     });
     totalDifficulty = totalDifficulty / courseCount;
-    const diff = document.querySelector("#diff");
+    let diff = document.querySelector("#diff");
     diff === null || diff === void 0 ? void 0 : diff.innerHTML = totalDifficulty;
 }
 main();
