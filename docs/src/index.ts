@@ -375,7 +375,7 @@ const loadCourse = (course: Course) => {
   closeButton.innerHTML = "X"
   //add even listener to remove by id
   const courseToRemove = document.getElementById(courseID);
-  closeButton.addEventListener("click", () => {removeElement(courseToRemove); localStorage.removeItem(courseID)}); 
+  closeButton.addEventListener("click", () => {removeElement(courseToRemove); localStorage.removeItem(courseID); removeCourse(courseID);}); 
 
 
   closeButtonContainer?.appendChild(closeButton);
@@ -899,6 +899,27 @@ div.innerHTML = `<div class="form-container card">
 document.body.appendChild(div);
 
  
+
+}
+
+
+function removeCourse(courseID) {
+
+
+  fetch(`${serverURI}/remove`, {
+    method: "POST",
+    credentials: "include",
+    body: JSON.stringify({
+      courseID: courseID
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data)
+    });
 
 }
 

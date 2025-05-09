@@ -268,7 +268,7 @@ const loadCourse = (course) => {
     closeButton.innerHTML = "X";
     //add even listener to remove by id
     const courseToRemove = document.getElementById(courseID);
-    closeButton.addEventListener("click", () => { removeElement(courseToRemove); localStorage.removeItem(courseID); });
+    closeButton.addEventListener("click", () => { removeElement(courseToRemove); localStorage.removeItem(courseID); removeCourse(courseID); });
     closeButtonContainer === null || closeButtonContainer === void 0 ? void 0 : closeButtonContainer.appendChild(closeButton);
     //add sibling ->
     const titleSpan = document.createElement("span");
@@ -668,6 +668,22 @@ function loadSignup() {
       </form>
     </div>`;
     document.body.appendChild(div);
+}
+function removeCourse(courseID) {
+    fetch(`${serverURI}/remove`, {
+        method: "POST",
+        credentials: "include",
+        body: JSON.stringify({
+            courseID: courseID
+        }),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8",
+        },
+    })
+        .then((response) => response.json())
+        .then((data) => {
+        console.log(data);
+    });
 }
 function main() {
     //get each course from local storage
