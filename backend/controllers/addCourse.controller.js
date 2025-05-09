@@ -12,7 +12,7 @@ const addCourseController = async (req, res) =>{
 
       //const userID = req.cookies.userID;
       const userID = "681d38ced48586967acb370d"
-    const foundUser = await User.findOne({_id, userID})
+    const foundUser = await User.findOne({_id: userID})
     const userCourses = foundUser.course
 
     res.send({courses: userCourses});
