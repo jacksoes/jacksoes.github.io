@@ -171,7 +171,7 @@ body {
 }
 
 .ball:hover {
-  cursor: pointer;
+  cursor: pointer !important;
   background-color: #006633;
 }
 
@@ -273,7 +273,7 @@ body {
   border-radius: 0.25rem;
 }
 .green-small-button:hover {
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 .form-container {

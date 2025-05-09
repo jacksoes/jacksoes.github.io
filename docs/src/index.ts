@@ -2,7 +2,7 @@ const serverURI: string = "http://3.217.238.48:3000";
 
 //const serverURI = "http://localhost:3000";
 
-
+const totalDifficulty = 0;
 
 
 type Course = {
@@ -21,6 +21,7 @@ const addCourse = (event: Event) => {
   const courseName: string = event.target.children[0].value;
 
   getCourseData(courseName, serverURI);
+
 
   // add if user is logged in
 
@@ -947,14 +948,27 @@ function logout(){
 
 function main () {
   //get each course from local storage
+  let courseCount = 0;
   
     Object.keys(localStorage).forEach(function(key){
       // to do: better type checking for if its a course
       if(key?.charAt(0) == '6')
       {
         loadCourse(JSON.parse(localStorage.getItem(key)));
+        let difficulty = JSON.parse(localStorage.getItem(key))
+        difficulty = difficulty.rating
+        difficulty = parseFloat(difficulty);
+        totalDifficulty += JSON.parse(localStorage.getItem(key))
+
+        courseCount++;
       }
  })
+totalDifficulty = totalDifficulty / courseCount;
+ const diff = document.querySelector("#diff")
+
+ diff?.innerHTML = totalDifficulty;
+ 
+
 
 
 }
