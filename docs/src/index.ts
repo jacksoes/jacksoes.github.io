@@ -930,7 +930,15 @@ function logout(){
   localStorage.clear();
   let name = document.querySelector("#usernameContainer");
   name?.innerHTML = "";
-  main();
+  
+  let container = document.querySelector(".course-span")
+
+  while(container?.firstChild){
+    container.removeChild(container.firstChild)
+  }
+
+
+ 
 }
 
 

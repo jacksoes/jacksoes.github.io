@@ -692,7 +692,10 @@ function logout() {
     localStorage.clear();
     let name = document.querySelector("#usernameContainer");
     name === null || name === void 0 ? void 0 : name.innerHTML = "";
-    main();
+    let container = document.querySelector(".course-span");
+    while (container === null || container === void 0 ? void 0 : container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
 }
 function main() {
     //get each course from local storage
