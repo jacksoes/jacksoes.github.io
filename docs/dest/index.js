@@ -715,6 +715,7 @@ function advisor(event) {
     })
         .then((response) => response.json())
         .then((data) => {
+        console.log(data);
         alert(data.result);
     });
 }
