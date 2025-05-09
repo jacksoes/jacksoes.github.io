@@ -22,4 +22,4 @@ const removeCourseController = async (req, res) => {
 
 }
 
-module.exports = {removeCourseController}
+module.exports = removeCourseController;
