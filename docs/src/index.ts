@@ -254,13 +254,13 @@ const userSignup = (event) => {
   
 };
 
-const userLogin = (event) => {
+const userLogin = async (event) => {
   event.preventDefault();
 
   const username = event.target[0].value;
   const password = event.target[1].value;
 
-  fetch(`${serverURI}/logIn`, {
+  await fetch(`${serverURI}/logIn`, {
     method: "POST",
     body: JSON.stringify({
       username: username,
@@ -276,6 +276,18 @@ const userLogin = (event) => {
       console.log(data.userID);
       document.cookie = `userID=${data.userID}`;
     });
+
+    fetch(`${serverURI}/add`, {
+      credentials: "include",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("courses are: " + data.courses)
+      });
+  
 };
 
 
@@ -284,7 +296,7 @@ function showCookies() {
   output.textContent = `> ${document.cookie}`;
 }
 
-//showCookies();
+//showCookies()
 
 
 function removeElement(element) {

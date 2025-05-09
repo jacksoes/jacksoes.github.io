@@ -1,4 +1,13 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 const serverURI = "http://3.217.238.48:3000";
 //const serverURI: string = "http://localhost:3000";
 const addCourse = (event) => {
@@ -178,11 +187,11 @@ const userSignup = (event) => {
         // store data in local storag
     });
 };
-const userLogin = (event) => {
+const userLogin = (event) => __awaiter(void 0, void 0, void 0, function* () {
     event.preventDefault();
     const username = event.target[0].value;
     const password = event.target[1].value;
-    fetch(`${serverURI}/logIn`, {
+    yield fetch(`${serverURI}/logIn`, {
         method: "POST",
         body: JSON.stringify({
             username: username,
@@ -198,12 +207,22 @@ const userLogin = (event) => {
         console.log(data.userID);
         document.cookie = `userID=${data.userID}`;
     });
-};
+    fetch(`${serverURI}/add`, {
+        credentials: "include",
+        headers: {
+            "Content-type": "application/json; charset=UTF-8",
+        },
+    })
+        .then((response) => response.json())
+        .then((data) => {
+        console.log("courses are: " + data.courses);
+    });
+});
 function showCookies() {
     const output = document.getElementById("cookies");
     output.textContent = `> ${document.cookie}`;
 }
-//showCookies();
+//showCookies()
 function removeElement(element) {
     /*console.log("close form ran")
     let form = document.querySelector(".form-container");
