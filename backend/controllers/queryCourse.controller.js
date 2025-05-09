@@ -11,9 +11,9 @@ const queryCourseController = async (req, res) => {
   const course = req.body.courseName;
   //prompts
   const promptRating = `Rate the difficulty of the course out of 5: ${course}. Return only a length 3 decimial in the format $.$`;
-  const promptSubject = `give me a list of subjects in the course : ${course}. Return only a string with the format '$^^~~$^^~~$ ...etc' the $'s are the list contents.`;
+  const promptSubject = `give me a list of subjects that are typically learned in the course : ${course}. Return only a string with the format '$^^~~$^^~~$ ...etc' the $'s are the list contents.`;
   const promptSimilar = `give me a list of similar classes to the course : ${course}. Return only a string with the format '$^^~~$^^~~$ ...etc' the $'s are the list contents.`;
-  const promptResource = `give me a list of resources that will be useful in the course: ${course}. Return only a string with the format '$^^~~$^^~~$ ...etc' the $'s are the list contents.`;
+  const promptResource = `give me a list of resources like websites or books that will be useful in the course: ${course}. Return only a string with the format '$^^~~$^^~~$ ...etc' the $'s are the list contents.`;
 
   //prompt as one request
   const prompt = `separate your answer to these 3 promps with the string: ~~^%. prompt 1: ${promptRating}, prompt 2: ${promptSimilar}, prompt 3: ${promptSubject}, promp 4: ${promptResource}`;

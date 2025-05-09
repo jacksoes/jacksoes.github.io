@@ -698,6 +698,26 @@ function logout() {
         container.removeChild(container.firstChild);
     }
 }
+function advisor(event) {
+    event.preventDefault();
+    let prompt = "You are a course advisor, I am a student asking for course advice. Respond to my following prompt: ";
+    prompt += event.target[0].value;
+    console.log(prompt);
+    fetch(`${serverURI}/advisor`, {
+        method: "POST",
+        credentials: "include",
+        body: JSON.stringify({
+            prompt: prompt,
+        }),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8",
+        },
+    })
+        .then((response) => response.json())
+        .then((data) => {
+        alert(data.result);
+    });
+}
 function main() {
     //get each course from local storage
     let totalDifficulty = 0;

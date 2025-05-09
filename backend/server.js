@@ -9,6 +9,7 @@ const signUpRouter = require("./routes/signUp.route.js")
 const logInRouter = require("./routes/logIn.route.js")
 const addCourseRouter = require("./routes/addCourse.route.js")
 const removeCourseRouter = require("./routes/removeCourse.route.js")
+const advisorRouter = require("/routes/advisor.route.js")
 
 const connectDatabase = require('./database.js')
 
@@ -26,6 +27,7 @@ async function main() {
   app.use('/', logInRouter);
   app.use("/", addCourseRouter)
   app.use("/", removeCourseRouter);
+  app.use("/", advisorRouter);
 
   //console.log(result.response.text())
 }
