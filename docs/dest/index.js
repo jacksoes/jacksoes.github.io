@@ -151,6 +151,9 @@ const userLogin = (event) => __awaiter(void 0, void 0, void 0, function* () {
     })
         .then((response) => response.json())
         .then((data) => {
+        if (!data.loggedIn) {
+            return;
+        }
         console.log(data);
         console.log(data.userID);
         document.cookie = `userID=${data.userID}`;
@@ -177,7 +180,7 @@ function showCookies() {
     const output = document.getElementById("cookies");
     output.textContent = `> ${document.cookie}`;
 }
-//showCookies()
+//showCookies();
 function removeElement(element) {
     /*console.log("close form ran")
     let form = document.querySelector(".form-container");

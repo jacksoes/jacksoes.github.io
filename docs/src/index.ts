@@ -217,11 +217,15 @@ const userLogin = async (event) => {
   })
     .then((response) => response.json())
     .then((data) => {
+      if(!data.loggedIn){
+        return
+      }
       console.log(data);
       console.log(data.userID);
       document.cookie = `userID=${data.userID}`;
       let name = document.querySelector("#usernameContainer");
       name?.innerHTML = username;
+
     });
 
     fetch(`${serverURI}/add`, {
@@ -250,7 +254,7 @@ function showCookies() {
   output.textContent = `> ${document.cookie}`;
 }
 
-//showCookies()
+//showCookies();
 
 
 function removeElement(element) {
