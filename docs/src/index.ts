@@ -2,8 +2,6 @@ const serverURI: string = "http://3.217.238.48:3000";
 
 //const serverURI = "http://localhost:3000";
 
-
-
 type Course = {
   _id: string;
   title: string;
@@ -21,26 +19,17 @@ const addCourse = (event: Event) => {
 
   getCourseData(courseName, serverURI);
 
-
   // add if user is logged in
-
-
 };
 
-
 const updateTopics = (topics: Array<string>) => {
-
   //fill section 1 with
   //div class flexpair
   // child -> div class child flex, button class ball, div class line
   //div dic class child -felx grow
   //  child -> <p>course text
 
- 
-
-  
   const list = document.getElementById("topics-list");
-
 
   while (list.firstChild) {
     list.removeChild(list.firstChild);
@@ -48,10 +37,8 @@ const updateTopics = (topics: Array<string>) => {
 
   let count = 0;
   topics.forEach((topic) => {
-
     const div1: HTMLDivElement = document.createElement("div");
     div1.classList.add("flex-pair");
-    
 
     const div2: HTMLDivElement = document.createElement("div");
     div2.classList.add("child-flex");
@@ -82,8 +69,7 @@ const updateTopics = (topics: Array<string>) => {
 };
 
 const loadResources = (resources: Array<string>) => {
-
-  const list: HTMLUListElement = document.getElementById("resources-list")
+  const list: HTMLUListElement = document.getElementById("resources-list");
 
   while (list.firstChild) {
     list.removeChild(list.firstChild);
@@ -92,9 +78,8 @@ const loadResources = (resources: Array<string>) => {
   resources.forEach((resource) => {
     const container: HTMLDivElement = document.createElement("div");
     container.classList.add("resource-container");
-    
-    list.appendChild(container);
 
+    list.appendChild(container);
 
     const span: HTMLSpanElement = document.createElement("span");
     span.classList.add("rl-padding");
@@ -112,11 +97,7 @@ const loadResources = (resources: Array<string>) => {
     resourceName.innerHTML = resource;
 
     container.appendChild(resourceName);
-
-    
   });
-
-
 
   /*
   <div class="resource-container">
@@ -126,12 +107,7 @@ const loadResources = (resources: Array<string>) => {
     <p>Paul's Online Math Notes</p>
   </div>
  */
-  
 };
-
-
-
-
 
 /*
 updateRating(dummyCourse.rating, "Calculus 1");
@@ -162,12 +138,11 @@ const getCourseData = (courseName: string, serverURI: string) => {
   })
     .then((response) => response.json())
     .then((courseData: Course) => {
+      console.log("test");
+      courseData.title = courseName;
 
-      console.log("test")
-      courseData.title = courseName
-      
       loadCourse(courseData);
-      localStorage.setItem(courseData._id, JSON.stringify(courseData))
+      localStorage.setItem(courseData._id, JSON.stringify(courseData));
     });
 };
 
@@ -193,10 +168,7 @@ const userSignup = (event) => {
       console.log(data);
 
       // store data in local storag
-
     });
-
-  
 };
 
 const userLogin = async (event) => {
@@ -217,37 +189,32 @@ const userLogin = async (event) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      if(!data.loggedIn){
-        return
+      if (!data.loggedIn) {
+        return;
       }
       console.log(data);
       console.log(data.userID);
       document.cookie = `userID=${data.userID}`;
       let name = document.querySelector("#usernameContainer");
       name?.innerHTML = username;
-
     });
 
-    fetch(`${serverURI}/add`, {
-      credentials: "include",
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("courses are: ", data.courses);
-        localStorage.clear();
-        data.courses.forEach((course) =>{
-          localStorage.setItem(course._id, JSON.stringify(course))
-
-        } )
-        main();
-
+  fetch(`${serverURI}/add`, {
+    credentials: "include",
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("courses are: ", data.courses);
+      localStorage.clear();
+      data.courses.forEach((course) => {
+        localStorage.setItem(course._id, JSON.stringify(course));
       });
-  
+      main();
+    });
 };
-
 
 function showCookies() {
   const output = document.getElementById("cookies");
@@ -256,9 +223,7 @@ function showCookies() {
 
 //showCookies();
 
-
 function removeElement(element) {
-  
   /*console.log("close form ran")
   let form = document.querySelector(".form-container");
 
@@ -270,141 +235,117 @@ function removeElement(element) {
 
   */
 
+  console.log("close form ran");
 
-  console.log("close form ran")
-
-
-  while(element?.firstChild){
+  while (element?.firstChild) {
     element.removeChild(element.firstChild);
   }
 
   element?.remove();
-
 }
 
-
 const loadCourse = (course: Course) => {
-
-
-  const courseID = course._id
-  const courseTitle = course.title
-  const courseRating = course.rating
-
+  const courseID = course._id;
+  const courseTitle = course.title;
+  const courseRating = course.rating;
 
   // select course-span
 
   let parentContainer = document.querySelector(".course-span");
-  
+
   //parentContainer?.insertAdjacentElement("afterend",)
   // add-child->
 
-  
   const courseContainer: HTMLDivElement = document.createElement("div");
-  courseContainer.id = courseID
+  courseContainer.id = courseID;
 
   courseContainer.classList.add("course");
-  
 
   parentContainer?.appendChild(courseContainer);
 
-
-  
   //add sibling ->
 
   const closeButtonContainer: HTMLDivElement = document.createElement("div");
   closeButtonContainer.classList.add("course-close-container");
 
   courseContainer?.appendChild(closeButtonContainer);
-  
-
 
   //add child->
 
   const closeButton: HTMLButtonElement = document.createElement("button");
   closeButton.classList.add("button-minimal");
   closeButton.classList.add("course-close-button");
-  closeButton.innerHTML = "X"
+  closeButton.innerHTML = "X";
   //add even listener to remove by id
   const courseToRemove = document.getElementById(courseID);
-  closeButton.addEventListener("click", () => {removeElement(courseToRemove); localStorage.removeItem(courseID); removeCourse(courseID);}); 
-
+  closeButton.addEventListener("click", () => {
+    removeElement(courseToRemove);
+    localStorage.removeItem(courseID);
+    removeCourse(courseID);
+  });
 
   closeButtonContainer?.appendChild(closeButton);
 
-    //add sibling ->
+  //add sibling ->
 
-    const titleSpan: HTMLSpanElement = document.createElement("span");
-    titleSpan.classList.add("course-heading");
+  const titleSpan: HTMLSpanElement = document.createElement("span");
+  titleSpan.classList.add("course-heading");
 
-    closeButtonContainer?.insertAdjacentElement("afterend", titleSpan);
+  closeButtonContainer?.insertAdjacentElement("afterend", titleSpan);
 
-    // add child ->
+  // add child ->
 
-    const title: HTMLHeadElement = document.createElement("h1");
-    title.innerHTML = courseTitle;
+  const title: HTMLHeadElement = document.createElement("h1");
+  title.innerHTML = courseTitle;
 
-    titleSpan.appendChild(title);
+  titleSpan.appendChild(title);
 
-    // add sibling ->
+  // add sibling ->
 
-    const ratingSpan: HTMLSpanElement = document.createElement("span");
-    ratingSpan.classList.add("course-rating");
+  const ratingSpan: HTMLSpanElement = document.createElement("span");
+  ratingSpan.classList.add("course-rating");
 
-    titleSpan?.insertAdjacentElement("afterend", ratingSpan);
+  titleSpan?.insertAdjacentElement("afterend", ratingSpan);
 
+  // add child ->
 
+  const rating: HTMLHeadElement = document.createElement("h1");
+  rating.innerHTML = courseRating;
 
-    // add child ->
+  ratingSpan?.appendChild(rating);
 
-    const rating: HTMLHeadElement = document.createElement("h1");
-    rating.innerHTML = courseRating;
+  // add sibling ->
 
-    ratingSpan?.appendChild(rating);
+  const detailsSpan: HTMLSpanElement = document.createElement("span");
+  detailsSpan.classList.add("course-details");
 
-    // add sibling ->
+  ratingSpan?.insertAdjacentElement("afterend", detailsSpan);
 
-    const detailsSpan: HTMLSpanElement = document.createElement("span");
-    detailsSpan.classList.add("course-details");
+  // add child ->
 
-    ratingSpan?.insertAdjacentElement("afterend", detailsSpan);
+  const buttonContainer: HTMLDivElement = document.createElement("div");
+  buttonContainer.classList.add("course-button-container");
 
-    // add child ->
+  detailsSpan.appendChild(buttonContainer);
 
-    const buttonContainer: HTMLDivElement = document.createElement("div");
-    buttonContainer.classList.add("course-button-container");
+  // add child ->
 
-    detailsSpan.appendChild(buttonContainer);
+  const button: HTMLButtonElement = document.createElement("button");
+  button.classList.add("course-button");
 
-    // add child ->
+  button.innerHTML = "details";
 
-    const button: HTMLButtonElement = document.createElement("button");
-    button.classList.add("course-button");
+  button.addEventListener("click", () => selectCourse(courseID, button));
 
-    button.innerHTML = "details"
+  buttonContainer.appendChild(button);
 
-    button.addEventListener("click", () => selectCourse(courseID, button))
+  console.log(course);
 
-    buttonContainer.appendChild(button);
+  loadSimilarCourses(course.similarClasses);
+  loadResources(course.learningResources);
+  updateTopics(course.topicsCovered);
 
-    console.log(course)
-
-
-    loadSimilarCourses(course.similarClasses);
-    loadResources(course.learningResources);
-    updateTopics(course.topicsCovered);
-
-
-
-
-
-
-
-
-
-
-
-
-/*
+  /*
   <span class="course-span">
 
   <div class="course" id="course1">
@@ -424,85 +365,49 @@ const loadCourse = (course: Course) => {
     </span>
   </div>
 */
-
-
-}
-
+};
 
 function loadSimilarCourses(similarCourses) {
+  const list = document.getElementById("similar-list");
 
-
-
-  const list = document.getElementById("similar-list")
-
-  while(list?.firstChild)
-  {
+  while (list?.firstChild) {
     list.removeChild(list?.firstChild);
   }
 
+  similarCourses.forEach((courseName) => {
+    // add sibling ->
 
+    // add child ->
 
+    const container: HTMLDivElement = document.createElement("div");
+    container.classList.add("resource-container");
 
-  similarCourses.forEach( (courseName) => {
+    list?.appendChild(container);
+    // add child to container ->
 
+    const span: HTMLSpanElement = document.createElement("span");
+    span.classList.add("rl-padding");
 
-    
-  
-  
-  
-  
-    
-     
-      // add sibling ->
-  
-     
-  
-  
-      // add child ->
-  
-      const container: HTMLDivElement = document.createElement("div");
-      container.classList.add("resource-container");
-  
-      list?.appendChild(container);
-      // add child to container ->
-  
-  
-      const span: HTMLSpanElement = document.createElement("span");
-      span.classList.add("rl-padding");
-  
-      container?.appendChild(span);
-  
-      // add child to span ->
-  
-      const button: HTMLButtonElement = document.createElement("button");
-      button.classList.add("green-small-button");
-      button.innerHTML = "+";
-      button.addEventListener("click", () => getCourseData(courseName, serverURI))
+    container?.appendChild(span);
 
-  
-      span.appendChild(button);
-  
-  
-      // add sibling to span ->
-  
-      const name: HTMLParagraphElement = document.createElement("p");
-      name.innerHTML = courseName
-  
-      span?.insertAdjacentElement("afterend", name);
+    // add child to span ->
 
-    
+    const button: HTMLButtonElement = document.createElement("button");
+    button.classList.add("green-small-button");
+    button.innerHTML = "+";
+    button.addEventListener("click", () =>
+      getCourseData(courseName, serverURI)
+    );
 
-  })
+    span.appendChild(button);
 
-  
+    // add sibling to span ->
 
- 
+    const name: HTMLParagraphElement = document.createElement("p");
+    name.innerHTML = courseName;
 
-
-
-
-
-
+    span?.insertAdjacentElement("afterend", name);
+  });
 
   /*
 
@@ -520,20 +425,16 @@ function loadSimilarCourses(similarCourses) {
         </ul>
 
       </div>*/
-
 }
 
-
-function selectCourse(courseID, button){
-
-
+function selectCourse(courseID, button) {
   //find course by course id
-//bc010e6ed25b802da7eb
+  //bc010e6ed25b802da7eb
   console.log(courseID);
   // make button = selected
 
   //if button is already selected
- /* if(button.style.background === 'rgb(0, 102, 51)' || button.style.background === "#006633")
+  /* if(button.style.background === 'rgb(0, 102, 51)' || button.style.background === "#006633")
   {
     button.style.background = "unset";
   } // else select
@@ -543,7 +444,6 @@ function selectCourse(courseID, button){
   let course = localStorage.getItem(courseID);
   course = JSON.parse(course);
 
-
   // load topics
   loadSimilarCourses(course.similarClasses);
   loadResources(course.learningResources);
@@ -552,12 +452,10 @@ function selectCourse(courseID, button){
   //load resources
 
   //load similar classe
-
 }
 
-function loadLogin(){
-
-/*
+function loadLogin() {
+  /*
 
   const formContainer: HTMLDivElement = document.createElement("div");
   formContainer.classList.add("form-container");
@@ -686,20 +584,15 @@ function loadLogin(){
   button.insertAdjacentElement("afterend", button2)
   */
 
-/*
+  /*
   <button class="course-button">Log In</button>
   <br>
   <button class="button-minimal"> Sign Up </button>
 */
 
-
-
-
-
   //
 
-
-/*
+  /*
   <div class="form-container card">
   <button class="button-minimal close-button" type="button" onclick="removeElement(document.querySelector('.form-container'))">x</button>
   <form class="signUp-form" onsubmit="userLogin(event)">
@@ -745,10 +638,9 @@ function loadLogin(){
 </div>
 */
 
+  const div = document.createElement("div");
 
-const div = document.createElement("div")
-
-div.innerHTML = `<div class="form-container card">
+  div.innerHTML = `<div class="form-container card">
 <button class="button-minimal close-button" type="button" onclick="removeElement(document.querySelector('.form-container'))">x</button>
 <form class="signUp-form" onsubmit="userLogin(event)">
 
@@ -787,19 +679,17 @@ div.innerHTML = `<div class="form-container card">
     
     <button class="course-button">Log In</button>
     <br>
-    <button class="button-minimal" onclick="loadSignup()"> Sign Up </button>
+    <button class="button-minimal" type="button" onclick="loadSignup()"> Sign Up </button>
   </div>
 </form>
-</div>`
-document.body.appendChild(div);
+</div>`;
+  document.body.appendChild(div);
 }
 
-function loadSignup(){
+function loadSignup() {
+  const div = document.createElement("div");
 
-
-  const div = document.createElement("div")
-
-div.innerHTML = `<div class="form-container card">
+  div.innerHTML = `<div class="form-container card">
     <button class="button-minimal close-button" type="button" onclick="removeElement(document.querySelector('.form-container'))">x</button>
       <form class="signUp-form" onsubmit="userSignup(event)">
         <div class="flex-pair">
@@ -848,22 +738,16 @@ div.innerHTML = `<div class="form-container card">
           <button class="button-minimal" type="button" onclick="loadLogin()"> Log In </button>
         </div>
       </form>
-    </div>`
-document.body.appendChild(div);
-
- 
-
+    </div>`;
+  document.body.appendChild(div);
 }
 
-
 function removeCourse(courseID) {
-
-
   fetch(`${serverURI}/remove`, {
     method: "POST",
     credentials: "include",
     body: JSON.stringify({
-      courseID: courseID
+      courseID: courseID,
     }),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
@@ -871,34 +755,29 @@ function removeCourse(courseID) {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data)
+      console.log(data);
     });
-
 }
 
-function logout(){
+function logout() {
   document.cookie = "userID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
   localStorage.clear();
   let name = document.querySelector("#usernameContainer");
   name?.innerHTML = "";
-  
-  let container = document.querySelector(".course-span")
 
-  while(container?.firstChild){
-    container.removeChild(container.firstChild)
+  let container = document.querySelector(".course-span");
+
+  while (container?.firstChild) {
+    container.removeChild(container.firstChild);
   }
-
-
- 
 }
 
-function advisor(event){
-  event.preventDefault()
-  let prompt = "You are a course advisor, I am a student asking for course advice. Respond to my following prompt: "
-  prompt += event.target[0].value
+function advisor(event) {
+  event.preventDefault();
+  let prompt =
+    "You are a course advisor, I am a student asking for course advice. Respond to my following prompt: ";
+  prompt += event.target[0].value;
   console.log(prompt);
-
-  
 
   fetch(`${serverURI}/advisor`, {
     method: "POST",
@@ -912,49 +791,36 @@ function advisor(event){
   })
     .then((response) => response.json())
     .then((data) => {
-      alert(data.result)
+      alert(data.result);
     });
-
-
-  
 }
 
-
-
-function main () {
+function main() {
   //get each course from local storage
   let totalDifficulty = 0;
   let courseCount = 0;
-  
-    Object.keys(localStorage).forEach(function(key){
-      // to do: better type checking for if its a course
-      if(key?.charAt(0) == '6')
-      {
-        loadCourse(JSON.parse(localStorage.getItem(key)));
-        let difficulty = JSON.parse(localStorage.getItem(key))
-        difficulty = difficulty.rating
-        difficulty = parseFloat(difficulty);
-        totalDifficulty += difficulty;
 
-        courseCount++;
-      }
- })
+  Object.keys(localStorage).forEach(function (key) {
+    // to do: better type checking for if its a course
+    if (key?.charAt(0) == "6") {
+      loadCourse(JSON.parse(localStorage.getItem(key)));
+      let difficulty = JSON.parse(localStorage.getItem(key));
+      difficulty = difficulty.rating;
+      difficulty = parseFloat(difficulty);
+      totalDifficulty += difficulty;
 
-if(totalDifficulty != 0)
-{
-  totalDifficulty = totalDifficulty / courseCount;
-  let diff = document.querySelector("#diff")
-  diff?.innerHTML = totalDifficulty;
-}
+      courseCount++;
+    }
+  });
 
- 
-
-
-
+  if (totalDifficulty != 0) {
+    totalDifficulty = totalDifficulty / courseCount;
+    let diff = document.querySelector("#diff");
+    diff?.innerHTML = totalDifficulty;
+  }
 }
 
 main();
-
 
 //loadSignup();
 //loadLogin()

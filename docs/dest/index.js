@@ -221,7 +221,11 @@ const loadCourse = (course) => {
     closeButton.innerHTML = "X";
     //add even listener to remove by id
     const courseToRemove = document.getElementById(courseID);
-    closeButton.addEventListener("click", () => { removeElement(courseToRemove); localStorage.removeItem(courseID); removeCourse(courseID); });
+    closeButton.addEventListener("click", () => {
+        removeElement(courseToRemove);
+        localStorage.removeItem(courseID);
+        removeCourse(courseID);
+    });
     closeButtonContainer === null || closeButtonContainer === void 0 ? void 0 : closeButtonContainer.appendChild(closeButton);
     //add sibling ->
     const titleSpan = document.createElement("span");
@@ -258,25 +262,25 @@ const loadCourse = (course) => {
     loadResources(course.learningResources);
     updateTopics(course.topicsCovered);
     /*
-      <span class="course-span">
-    
-      <div class="course" id="course1">
-      <div class="course-close-container"><button class="button-minimal course-close-button" type="button" onclick="removeElement(document.querySelector('#course1'))">x</button></div>
-    
-        <span class="course-heading">
-    
-          <h1>Algebra</h1>
-        </span>
-        <span class="course-rating">
-          <h1>0</h1>
-        </span>
-        <span class="course-details">
-          <div class="course-button-container">
-            <button class="course-button">details</button>
-          </div>
-        </span>
-      </div>
-    */
+    <span class="course-span">
+  
+    <div class="course" id="course1">
+    <div class="course-close-container"><button class="button-minimal course-close-button" type="button" onclick="removeElement(document.querySelector('#course1'))">x</button></div>
+  
+      <span class="course-heading">
+  
+        <h1>Algebra</h1>
+      </span>
+      <span class="course-rating">
+        <h1>0</h1>
+      </span>
+      <span class="course-details">
+        <div class="course-button-container">
+          <button class="course-button">details</button>
+        </div>
+      </span>
+    </div>
+  */
 };
 function loadSimilarCourses(similarCourses) {
     const list = document.getElementById("similar-list");
@@ -328,12 +332,12 @@ function selectCourse(courseID, button) {
     // make button = selected
     //if button is already selected
     /* if(button.style.background === 'rgb(0, 102, 51)' || button.style.background === "#006633")
-     {
-       button.style.background = "unset";
-     } // else select
-     else{
-       button.style.background = "#006633"
-     }*/
+    {
+      button.style.background = "unset";
+    } // else select
+    else{
+      button.style.background = "#006633"
+    }*/
     let course = localStorage.getItem(courseID);
     course = JSON.parse(course);
     // load topics
@@ -345,184 +349,184 @@ function selectCourse(courseID, button) {
 }
 function loadLogin() {
     /*
+  
+    const formContainer: HTMLDivElement = document.createElement("div");
+    formContainer.classList.add("form-container");
+    formContainer.classList.add("card");
+  
+    document.body.appendChild(formContainer)
+  
+  
+    // add child to formContainer ->
+  
     
-      const formContainer: HTMLDivElement = document.createElement("div");
-      formContainer.classList.add("form-container");
-      formContainer.classList.add("card");
+  
+    const closeButton: HTMLButtonElement = document.createElement("button");
+    closeButton.classList.add("button-minimal")
+    closeButton.classList.add("close-button")
+    closeButton.innerHTML = "X"
+    // add event and maybe type button
+    formContainer.appendChild(closeButton);
+  
+  
+    // add adjacent to closeButton ->
+    const form: HTMLFormElement = document.createElement("form");
+    form.classList.add("signUp-form")
+    // aad event
+    closeButton.insertAdjacentElement("afterend", form)
+  
+  
+  
+    // add as child to form ->
+    const flexPair: HTMLDivElement = document.createElement("div");
+    flexPair.classList.add("flex-pair")
+  
+    form.appendChild(flexPair)
+  
+    // add as child to flexpar->
+    const header: HTMLDivElement = document.createElement("h2");
+    header.innerHTML = "rate my classes"
+  
+    flexPair.appendChild(header)
     
-      document.body.appendChild(formContainer)
-    
-    
-      // add child to formContainer ->
-    
-      
-    
-      const closeButton: HTMLButtonElement = document.createElement("button");
-      closeButton.classList.add("button-minimal")
-      closeButton.classList.add("close-button")
-      closeButton.innerHTML = "X"
-      // add event and maybe type button
-      formContainer.appendChild(closeButton);
-    
-    
-      // add adjacent to closeButton ->
-      const form: HTMLFormElement = document.createElement("form");
-      form.classList.add("signUp-form")
-      // aad event
-      closeButton.insertAdjacentElement("afterend", form)
-    
-    
-    
-      // add as child to form ->
-      const flexPair: HTMLDivElement = document.createElement("div");
-      flexPair.classList.add("flex-pair")
-    
-      form.appendChild(flexPair)
-    
-      // add as child to flexpar->
-      const header: HTMLDivElement = document.createElement("h2");
-      header.innerHTML = "rate my classes"
-    
-      flexPair.appendChild(header)
-      
-      // ad as sibling to header ->
-      const image: HTMLImageElement = document.createElement("img");
-      //image.src = "../resources/book.jpg"
-      image.alt = "book-logo"
-    
-      flexPair.appendChild(image)
-    
-    
-      // add adjacent to flex-pair ->
-    
-       const headerLogin: HTMLDivElement = document.createElement("h1");
-       headerLogin.classList.add("form-header")
-      headerLogin.innerHTML = "User Log in"
-    
-      flexPair.insertAdjacentElement("afterend", headerLogin)
-    
-      // add adjacent to header ->
-      const flexCol: HTMLDivElement = document.createElement("div");
-      flexCol.classList.add("flex-col")
-    
-      headerLogin.insertAdjacentElement("afterend", flexCol)
-    
-      // add child to flexCol ->
-    
-      const label: HTMLLabelElement = document.createElement("label");
-      label.classList.add("signUp-label")
-      //label.innerHTML="Email"
-    
-      const testSpan = document.createElement("span");
-      testSpan.innerHTML = "email"
-      label.appendChild(testSpan)
-    
-    
-      flexCol.appendChild(label);
-    
-     
-    
-      // add span as child
-      const span: HTMLSpanElement = document.createElement("span");
-      span.classList.add("red")
-      span.innerHTML = "*"
-    
-      label.appendChild(span)
-    
-    
-      //input as child of label
-    
-      const input: HTMLInputElement = document.createElement("input");
-    
-      label.appendChild(input)
-    
-      const label2: HTMLLabelElement = document.createElement("label");
-      label2.classList.add("signUp-label")
-    
-      flexCol.appendChild(label2)
-    
-      // add span as child
-      const span2: HTMLSpanElement = document.createElement("span");
-      span2.classList.add("red")
-      span2.innerHTML = "*"
-    
-      const testSpan2 = document.createElement("span");
-      testSpan2.innerHTML = "password"
-      label2.appendChild(testSpan2)
-    
-      label2.appendChild(span2);
-    
-    
-      //input as child of label
-    
-      const input2: HTMLInputElement = document.createElement("input");
-    
-      label2.appendChild(input2);
-    
-      const button = document.createElement("button");
-      button.classList.add("course-button");
-      button.innerHTML ="Log In"
-    
-      label2.insertAdjacentElement("afterend", button)
-    
-    
-      const button2 = document.createElement("button");
-      button2.classList.add("button-minimal");
-      button2.innerHTML ="Sign Up"
-    
-      button.insertAdjacentElement("afterend", button2)
-      */
-    /*
-      <button class="course-button">Log In</button>
-      <br>
-      <button class="button-minimal"> Sign Up </button>
+    // ad as sibling to header ->
+    const image: HTMLImageElement = document.createElement("img");
+    //image.src = "../resources/book.jpg"
+    image.alt = "book-logo"
+  
+    flexPair.appendChild(image)
+  
+  
+    // add adjacent to flex-pair ->
+  
+     const headerLogin: HTMLDivElement = document.createElement("h1");
+     headerLogin.classList.add("form-header")
+    headerLogin.innerHTML = "User Log in"
+  
+    flexPair.insertAdjacentElement("afterend", headerLogin)
+  
+    // add adjacent to header ->
+    const flexCol: HTMLDivElement = document.createElement("div");
+    flexCol.classList.add("flex-col")
+  
+    headerLogin.insertAdjacentElement("afterend", flexCol)
+  
+    // add child to flexCol ->
+  
+    const label: HTMLLabelElement = document.createElement("label");
+    label.classList.add("signUp-label")
+    //label.innerHTML="Email"
+  
+    const testSpan = document.createElement("span");
+    testSpan.innerHTML = "email"
+    label.appendChild(testSpan)
+  
+  
+    flexCol.appendChild(label);
+  
+   
+  
+    // add span as child
+    const span: HTMLSpanElement = document.createElement("span");
+    span.classList.add("red")
+    span.innerHTML = "*"
+  
+    label.appendChild(span)
+  
+  
+    //input as child of label
+  
+    const input: HTMLInputElement = document.createElement("input");
+  
+    label.appendChild(input)
+  
+    const label2: HTMLLabelElement = document.createElement("label");
+    label2.classList.add("signUp-label")
+  
+    flexCol.appendChild(label2)
+  
+    // add span as child
+    const span2: HTMLSpanElement = document.createElement("span");
+    span2.classList.add("red")
+    span2.innerHTML = "*"
+  
+    const testSpan2 = document.createElement("span");
+    testSpan2.innerHTML = "password"
+    label2.appendChild(testSpan2)
+  
+    label2.appendChild(span2);
+  
+  
+    //input as child of label
+  
+    const input2: HTMLInputElement = document.createElement("input");
+  
+    label2.appendChild(input2);
+  
+    const button = document.createElement("button");
+    button.classList.add("course-button");
+    button.innerHTML ="Log In"
+  
+    label2.insertAdjacentElement("afterend", button)
+  
+  
+    const button2 = document.createElement("button");
+    button2.classList.add("button-minimal");
+    button2.innerHTML ="Sign Up"
+  
+    button.insertAdjacentElement("afterend", button2)
     */
+    /*
+    <button class="course-button">Log In</button>
+    <br>
+    <button class="button-minimal"> Sign Up </button>
+  */
     //
     /*
-      <div class="form-container card">
-      <button class="button-minimal close-button" type="button" onclick="removeElement(document.querySelector('.form-container'))">x</button>
-      <form class="signUp-form" onsubmit="userLogin(event)">
-    
-    
-        <div class="flex-pair">
-          <h2>AI rate my classes</h2>
-          <img
-            class="signUp-logo"
-            height="50px"
-            width="50px"
-            src="resources/book.jpg"
-            alt="book-logo"
-          />
-        </div>
-    
-        <h1 class="form-header">User log in</h1>
-       
-    
-        <div class="flex-col">
-    
-    
-          <label class="signUp-label">Email<span class="red">*</span>
-          <input
-            class="signUp-input"
-            type="text"
-            placeholder="Enter your email"
-          /></label>
-    
-          <label class="signUp-label">Password<span class="red">*</span>
-          <input
-            class="signUp-input"
-            type="password"
-            placeholder="Enter your password"
-          /></label>
-          
-          
-          <button class="course-button">Log In</button>
-          <br>
-          <button class="button-minimal"> Sign Up </button>
-        </div>
-      </form>
-    </div>
-    */
+    <div class="form-container card">
+    <button class="button-minimal close-button" type="button" onclick="removeElement(document.querySelector('.form-container'))">x</button>
+    <form class="signUp-form" onsubmit="userLogin(event)">
+  
+  
+      <div class="flex-pair">
+        <h2>AI rate my classes</h2>
+        <img
+          class="signUp-logo"
+          height="50px"
+          width="50px"
+          src="resources/book.jpg"
+          alt="book-logo"
+        />
+      </div>
+  
+      <h1 class="form-header">User log in</h1>
+     
+  
+      <div class="flex-col">
+  
+  
+        <label class="signUp-label">Email<span class="red">*</span>
+        <input
+          class="signUp-input"
+          type="text"
+          placeholder="Enter your email"
+        /></label>
+  
+        <label class="signUp-label">Password<span class="red">*</span>
+        <input
+          class="signUp-input"
+          type="password"
+          placeholder="Enter your password"
+        /></label>
+        
+        
+        <button class="course-button">Log In</button>
+        <br>
+        <button class="button-minimal"> Sign Up </button>
+      </div>
+    </form>
+  </div>
+  */
     const div = document.createElement("div");
     div.innerHTML = `<div class="form-container card">
 <button class="button-minimal close-button" type="button" onclick="removeElement(document.querySelector('.form-container'))">x</button>
@@ -563,7 +567,7 @@ function loadLogin() {
     
     <button class="course-button">Log In</button>
     <br>
-    <button class="button-minimal" onclick="loadSignup()"> Sign Up </button>
+    <button class="button-minimal" type="button" onclick="loadSignup()"> Sign Up </button>
   </div>
 </form>
 </div>`;
@@ -628,7 +632,7 @@ function removeCourse(courseID) {
         method: "POST",
         credentials: "include",
         body: JSON.stringify({
-            courseID: courseID
+            courseID: courseID,
         }),
         headers: {
             "Content-type": "application/json; charset=UTF-8",
@@ -675,7 +679,7 @@ function main() {
     let courseCount = 0;
     Object.keys(localStorage).forEach(function (key) {
         // to do: better type checking for if its a course
-        if ((key === null || key === void 0 ? void 0 : key.charAt(0)) == '6') {
+        if ((key === null || key === void 0 ? void 0 : key.charAt(0)) == "6") {
             loadCourse(JSON.parse(localStorage.getItem(key)));
             let difficulty = JSON.parse(localStorage.getItem(key));
             difficulty = difficulty.rating;
