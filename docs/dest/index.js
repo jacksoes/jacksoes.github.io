@@ -598,7 +598,7 @@ function loadSignup() {
 
         <div class="flex-col">
           <label class="signUp-label">Email<span class="red">*</span>
-          <input pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+          <input
             class="signUp-input"
             type="text"
             placeholder="Enter your email"
