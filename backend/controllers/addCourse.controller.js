@@ -13,7 +13,7 @@ const addCourseController = async (req, res) =>{
       //const userID = req.cookies.userID;
       const userID = req.cookies.userID;
     const foundUser = await User.findOne({_id: userID})
-    if(foundUser.course && foundUser){
+    if(foundUser && foundUser.course){
       userCourses = foundUser.course
     }
     res.send({courses: userCourses});
