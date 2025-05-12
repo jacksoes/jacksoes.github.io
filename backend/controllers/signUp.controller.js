@@ -45,6 +45,7 @@ const signUpController = async (req, res) => {
     _id: new mongoose.Types.ObjectId(),
     userName: username,
     password: password,
+    course: [],
   }
 
   
