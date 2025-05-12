@@ -80,58 +80,6 @@ const loadResources = (resources) => {
     </div>
    */
 };
-const dummyCourse = {
-    _id: "testinggg",
-    title: "alebra",
-    rating: "3.5",
-    similarClasses: ["calc1", "calc2", "linear algebra"],
-    topicsCovered: [
-        "\nLimits and Continuity",
-        "Derivatives",
-        "Applications of Derivatives",
-        "Integrals",
-        "Techniques of Integration",
-        "Sequences and Series",
-        "Differential Equations",
-        "Functions",
-    ],
-    learningResources: [
-        "\nTextbook",
-        "Online Homework System",
-        "Professor's Office Hours",
-        "Teaching Assistant Sessions",
-        "Online Forums",
-        "Khan Academy",
-        "Paul's Online Math Notes",
-        "Calculus Study Guides",
-    ],
-};
-const dummyCourse2 = {
-    _id: "testingggadwwad",
-    title: "calculus1",
-    rating: "4",
-    similarClasses: ["calc1", "calc2", "linear algebra"],
-    topicsCovered: [
-        "\nLimits and CoASSSSDADSDADy",
-        "DeASSSSDADSDADes",
-        "Applications of DeASSSSDADSDADes",
-        "IASSSSDADSDADs",
-        "Techniques of IASSSSDADSDADion",
-        "Sequences anASSSSDADSDADs",
-        "DifferentialASSSSDADSDADons",
-        "FASSSSDADSDAD"
-    ],
-    learningResources: [
-        "\nASSSSDADSDADk",
-        "OnlASSSSDADSDADework System",
-        "Professor'ASSSSDADSDADe Hours",
-        "Teaching AASSSSDADSDADt Sessions",
-        "OnlinASSSSDADSDADs",
-        "KhanASSSSDADSDADy",
-        "PaulASSSSDADSDADne Math Notes",
-        "Calculus ASSSSDADSDADuides",
-    ],
-};
 /*
 updateRating(dummyCourse.rating, "Calculus 1");
 loadResources(dummyCourse.resources)
@@ -643,7 +591,7 @@ function loadSignup() {
 
         <div class="flex-col">
           <label class="signUp-label">Email<span class="red">*</span>
-          <input
+          <input pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
             class="signUp-input"
             type="text"
             placeholder="Enter your email"
